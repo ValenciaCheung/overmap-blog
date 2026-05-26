@@ -1,0 +1,50 @@
+---
+title: "UI 截图 → React + Tailwind + shadcn 组件"
+description: "把任意 UI 截图喂给视觉模型，让它直接产出可粘贴运行的 React 组件代码（含响应式 + a11y）。"
+category: "前端开发"
+tags: ["React", "Tailwind", "shadcn", "视觉理解"]
+model: "Claude 3.5+ / GPT-4o vision"
+date: "2026-05-26"
+prompt: |
+  你是一位资深前端工程师。我会发一张 UI 截图给你，请基于这张图产出可直接运行的代码：
+
+  约束：
+  1. 技术栈固定为 React 19 + TypeScript + Tailwind CSS v4 + shadcn/ui（Radix 底层）+ lucide-react 图标
+  2. 一个组件一个文件，文件名用 kebab-case，组件名用 PascalCase
+  3. 默认使用语义化 HTML（<nav>, <header>, <main>, <section>, <button>）
+  4. 状态用 React.useState；列表数据先用合理 mock，写在文件顶部 `const items = [...]`
+  5. 暗黑模式必须可用（用 `dark:` 前缀，不要用条件 className）
+  6. 不写注释，让代码自解释
+  7. 不要把所有内容塞到一个文件，可以拆 subcomponent
+
+  输出顺序：
+  - 先列文件路径树
+  - 然后逐个文件给完整代码（```tsx code block）
+  - 最后给一段 30 字以内的"如何粘到项目里"说明
+
+  现在请基于这张图开始。
+---
+
+## 用法
+
+1. 在 Claude 或 ChatGPT (vision) 里贴上这段提示词
+2. 上传一张 UI 截图（Figma 导出、网页截图、产品 mockup 都行）
+3. 让它产出代码后，把文件直接粘贴到你的 Next.js / Vite 项目
+
+## 适合什么场景
+
+- **复刻一个已有 UI** —— 比如想抄某个产品的 dashboard 局部
+- **把设计稿快速做成 demo** —— 不等待设计师交付细节
+- **跨设计系统 port** —— 别人用 MUI，你用 shadcn，截图喂模型就能转换
+
+## 改写思路
+
+- 想换技术栈 → 替换约束 1 里的具体库
+- 想要纯 HTML/CSS → 删除 React 相关约束，加 "输出单个 .html 文件"
+- 想要 Vue → "Vue 3 + script setup + Tailwind"
+
+## 坑点
+
+- 视觉模型对复杂表格 / 数据可视化的还原能力一般，可以让它先 ASCII 描述再编码
+- 颜色经常对不上，截图最好用纯色版本（避免渐变、阴影迷惑模型）
+- shadcn 组件名记错时（如把 `Button` 写成 `button`），跟模型说一句 "shadcn 组件首字母大写"

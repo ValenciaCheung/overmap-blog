@@ -1,0 +1,128 @@
+[
+  {
+    "id": "claude",
+    "name": "Claude",
+    "url": "https://claude.ai",
+    "description": "Anthropic 推出的对话式 AI，擅长长文本理解、写作、代码辅助与 Agent 任务编排。",
+    "category": "chat",
+    "tags": ["LLM", "Anthropic", "Coding"],
+    "pricing": "freemium",
+    "featured": true,
+    "logo": "🟧"
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "url": "https://chat.openai.com",
+    "description": "OpenAI 旗舰对话式 AI,GPT-4o / o1 / o3 系列模型加持,生态最完整。",
+    "category": "chat",
+    "tags": ["LLM", "OpenAI"],
+    "pricing": "freemium",
+    "featured": true,
+    "logo": "🟢"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "url": "https://cursor.com",
+    "description": "AI 优先的代码编辑器,内置 Composer 与 Agent 能力,适合全栈与 AI 应用开发。",
+    "category": "code",
+    "tags": ["IDE", "Agent", "Coding"],
+    "pricing": "freemium",
+    "featured": true,
+    "logo": "⌘"
+  },
+  {
+    "id": "v0",
+    "name": "v0 by Vercel",
+    "url": "https://v0.dev",
+    "description": "用自然语言生成 React + Tailwind + shadcn 组件,产品设计师友好。",
+    "category": "code",
+    "tags": ["UI", "React", "shadcn"],
+    "pricing": "freemium",
+    "featured": true,
+    "logo": "▲"
+  },
+  {
+    "id": "midjourney",
+    "name": "Midjourney",
+    "url": "https://www.midjourney.com",
+    "description": "顶级 AI 图像生成,艺术表现力强,适合海报、概念图、风格探索。",
+    "category": "image",
+    "tags": ["Image", "Art"],
+    "pricing": "paid",
+    "featured": true,
+    "logo": "🎨"
+  },
+  {
+    "id": "runway",
+    "name": "Runway",
+    "url": "https://runway.ml",
+    "description": "影视级 AI 视频生成与编辑,Gen-3 / Act-One 支持文字、图片到视频。",
+    "category": "video",
+    "tags": ["Video", "Film"],
+    "pricing": "freemium",
+    "featured": true,
+    "logo": "🎬"
+  },
+  {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "url": "https://elevenlabs.io",
+    "description": "业界最佳的 AI 语音合成与克隆,多语种、高拟真,适合配音、有声书。",
+    "category": "audio",
+    "tags": ["TTS", "Voice"],
+    "pricing": "freemium",
+    "logo": "🔊"
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "url": "https://perplexity.ai",
+    "description": "AI 搜索引擎,实时联网检索 + 引用溯源,替代 Google 做研究类查询。",
+    "category": "search",
+    "tags": ["Search", "Research"],
+    "pricing": "freemium",
+    "logo": "🔍"
+  },
+  {
+    "id": "figma-ai",
+    "name": "Figma AI",
+    "url": "https://www.figma.com/ai",
+    "description": "Figma 原生 AI 设计助手,自动布局、生成 UI、命名图层、智能搜索。",
+    "category": "design",
+    "tags": ["Design", "UI"],
+    "pricing": "freemium",
+    "logo": "🟣"
+  },
+  {
+    "id": "notion-ai",
+    "name": "Notion AI",
+    "url": "https://www.notion.so/product/ai",
+    "description": "Notion 内置 AI,可对全工作区做问答、写作、总结、翻译,适合知识管理。",
+    "category": "writing",
+    "tags": ["Writing", "Knowledge"],
+    "pricing": "paid",
+    "logo": "📝"
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini",
+    "url": "https://gemini.google.com",
+    "description": "Google 的多模态 AI 助手,2M 上下文,深度搜索与 Workspace 深度整合。",
+    "category": "chat",
+    "tags": ["LLM", "Google"],
+    "pricing": "freemium",
+    "logo": "♊"
+  },
+  {
+    "id": "suno",
+    "name": "Suno",
+    "url": "https://suno.com",
+    "description": "AI 音乐生成,输入歌词与风格描述直接生成完整歌曲。",
+    "category": "audio",
+    "tags": ["Music", "Audio"],
+    "pricing": "freemium",
+    "logo": "🎵"
+  }
+]

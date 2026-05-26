@@ -1,0 +1,58 @@
+---
+title: "Claude Code 工作流：把日常任务做成可复用的 Skill"
+description: "Skill 是 Claude Code 的可复用工作流单元。本文用三个真实例子告诉你什么时候该写 Skill，什么时候不该。"
+date: "2026-05-24"
+tags: ["Claude Code", "Workflow", "Agent"]
+author: "Overmap Team"
+---
+
+如果你已经在用 [Claude Code](https://claude.com/claude-code)，应该见过 `/<skill-name>` 这种斜杠命令。这就是 **Skill** —— 把一段复杂工作流（带文件结构、上下文、提示词、约束）封装成一个可触发的能力。
+
+## Skill 不是 Prompt，是工作流
+
+很多人把 Skill 误当成 "存一段 Prompt 留着用"。其实它更接近一个**带说明书的小工具箱**：
+
+- `SKILL.md` —— 触发条件、做什么、要什么输入、产出什么
+- 可选的脚本、模板、reference 文件
+- 一段被仔细打磨过的、能跟具体工具协同的指令链
+
+> 关键问题：**这个任务你会不会做超过 3 次？** 是 → 写 Skill；否 → 不值得。
+
+## 三个真实例子
+
+### 1. `daily-work-recap` —— 每天结束自动总结
+
+把当天的对话历史 + 文件变更过一遍，输出一份结构化 Markdown：工作总结 / 教程教学 / 使用工具 / 推文素材。我们的 `/Users/tongzhang/projects/` 目录每天会落一份 `工作日报-YYYY-MM-DD.md`，这个 Skill 跑出来的就是它。
+
+什么时候 ROI 高：**你想把日常工作做成可分享的内容**。
+
+### 2. `deploy-overmap-docs` —— VitePress 一键上线
+
+主站 `overmap.org/docs/` 是 VitePress 写的。每次更新文档要：
+
+1. `pnpm build` 在本地构建
+2. `tar` 打包 `dist/`
+3. `scp` 到 Vultr Osaka VPS
+4. SSH 进去备份当前 docs、解压新 dist
+
+写成 Skill 之后只需要说一句 "把文档上线"，整个流程跑完。
+
+什么时候 ROI 高：**步骤固定、容易写错、跑很多次**。
+
+### 3. `content-sheet-poster` —— 从 Excel 批量发推
+
+社交媒体内容用 Excel 管理（每行是一条推 / 帖子 / 视频文案 + 调度时间），Skill 读 Excel，把 status=ready 的行通过 Postiz CLI 发到 X / Threads / TikTok / IG / YT Shorts。
+
+什么时候 ROI 高：**多渠道分发、需要状态机管理**。
+
+## 写 Skill 的 3 条经验
+
+1. **触发条件要狠**。description 里写清楚 "什么时候用 / 什么时候不用"。否则 Claude 会乱触发或漏触发。
+2. **不要把 Skill 写成大杂烩**。一个 Skill 干一件事，复杂任务用 orchestrator skill 串多个小 Skill。
+3. **reference 文件比 prompt 重要**。把样板代码、配置模板、坑点清单放在 `reference/` 子目录里，Skill 用到时再 Read，比塞进 SKILL.md 强。
+
+## 小结
+
+Skill 把 AI 工具从 "通用助手" 变成 "你的私有工作流引擎"。哪些重复性高的事可以做成 Skill，就是 ROI 最高的 AI 投入。
+
+> 后续我们会陆续把日常用得最顺的 Skill 整理出来发到 [GitHub](https://github.com/overmapai)，欢迎 follow。

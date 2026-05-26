@@ -1,0 +1,47 @@
+[
+  {
+    "fullName": "anthropics/claude-code",
+    "category": "agents",
+    "note": "Anthropic 官方 CLI Agent —— 在本地运行的 Claude，可读写文件、跑命令、跨工具协作。整个 AI 编码生态的事实标准。"
+  },
+  {
+    "fullName": "anthropics/anthropic-cookbook",
+    "category": "prompts",
+    "note": "Anthropic 官方 Cookbook：Claude 的最佳实践、Agent 模式、提示词样板、tool use 示例的权威来源。"
+  },
+  {
+    "fullName": "Calcium-Ion/new-api",
+    "category": "framework",
+    "note": "AI 网关 / API 中转底座（也是 Overmap 主站的 fork 基础）。统一聚合 40+ 上游模型，自带账号 / 计费 / 限流后台。"
+  },
+  {
+    "fullName": "vercel/ai",
+    "category": "framework",
+    "note": "Vercel AI SDK —— React/Next.js 团队接 LLM 的事实标准库。Streaming、Tool calls、UI 三位一体。"
+  },
+  {
+    "fullName": "shadcn-ui/ui",
+    "category": "ui",
+    "note": "可拷贝粘贴的 React + Tailwind + Radix 组件库。本站点也基于它构建。"
+  },
+  {
+    "fullName": "f/awesome-chatgpt-prompts",
+    "category": "prompts",
+    "note": "提示词大全的祖师爷仓库，10w+ Star，按角色组织，适合白嫖灵感。"
+  },
+  {
+    "fullName": "langchain-ai/langchain",
+    "category": "framework",
+    "note": "最广为人知的 LLM 应用编排框架，链 / Agent / RAG / Tools 一应俱全。"
+  },
+  {
+    "fullName": "microsoft/autogen",
+    "category": "agents",
+    "note": "Microsoft 开源的多 Agent 协作框架，支持人机协同与多智能体对话。"
+  },
+  {
+    "fullName": "All-Hands-AI/OpenHands",
+    "category": "agents",
+    "note": "原 OpenDevin，端到端的自动化软件工程 Agent，能浏览、编码、运行命令。"
+  }
+]

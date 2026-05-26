@@ -1,0 +1,74 @@
+---
+title: "用 Next.js + shadcn/ui + MDX 搭一个 AI 知识站"
+description: "把这个 Blog 站点本身拆开看 —— 路由怎么分、设计系统怎么对齐、MDX 内容怎么管，给同样想搭一个的人当样板。"
+date: "2026-05-26"
+tags: ["Next.js", "shadcn", "MDX", "Tutorial"]
+author: "Overmap Team"
+---
+
+这个站点本身就是一个示例。如果你也想做一个"工具导航 + 博客 + Hub 聚合"三合一的内容站，这篇可以直接抄。
+
+## 技术选型
+
+| 关注点 | 选了什么 | 为什么 |
+|---|---|---|
+| 框架 | **Next.js 16 (App Router)** | SSG / ISR / API Routes 都要，SEO 友好 |
+| 样式 | **Tailwind v4 + shadcn/ui** | 跟主站 overmap.org 同一套 token，零设计成本 |
+| 内容 | **MDX + gray-matter** | Markdown 体感写作 + 嵌 React 组件 |
+| 代码高亮 | **rehype-pretty-code + shiki** | 双主题（亮/暗），编译期高亮，运行时零负担 |
+| GitHub 数据 | **构建时静态抓取** | `pnpm sync:github`，更新落到 `data/hub-cache.json` |
+
+## 路由结构
+
+```
+src/app/
+  layout.tsx           ← 全局 Header / Footer / Theme
+  page.tsx             ← 首页 Feed
+  tools/page.tsx       ← AI 工具库
+  blog/page.tsx        ← 博客列表
+  blog/[slug]/page.tsx ← 博客详情
+  hub/page.tsx         ← Skills Hub
+  prompts/page.tsx     ← 提示词库
+  prompts/[slug]/page.tsx
+```
+
+文件即路由，零配置。
+
+## 设计系统直接 fork 主站
+
+`overmap-relay`（new-api fork）的 `web/default/src/styles/theme.css` 里定义了完整的 oklch 蓝灰主题。我们把 `:root` / `.dark` 两组 CSS 变量一字不差搬过来，再在 `globals.css` 里 import：
+
+```css
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/public-sans";
+@import "../styles/theme.css";
+```
+
+这一步保证 **新站点和主站换肤一致**，未来主站调主色（比如把 primary 从蓝灰换成琥珀色），新站只要同步 `theme.css` 就跟上。
+
+## MDX 内容怎么管
+
+每篇博客是 `content/blog/*.mdx`，frontmatter 这样写：
+
+```yaml
+---
+title: "..."
+description: "..."
+date: "2026-05-26"
+tags: ["Next.js", "shadcn"]
+video: "https://www.youtube.com/watch?v=..."   # 可选
+---
+```
+
+`src/lib/blog.ts` 用 `fs.readdirSync` + `gray-matter` 在构建期扫描，渲染时用 `next-mdx-remote/rsc` 直接转成 React。再用 `reading-time` 算阅读时长，列表卡片就有"5 分钟"这种 metadata。
+
+## 部署
+
+- 推到 GitHub
+- 连接到 Vercel，自动检测 Next.js
+- DNS 把 `blog.overmap.org` CNAME 到 `cname.vercel-dns.com`
+- Vercel 项目设置里把自定义域名设为 `blog.overmap.org`
+
+整个过程比写这篇文章还快。

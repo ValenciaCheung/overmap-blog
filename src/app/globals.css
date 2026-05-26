@@ -1,26 +1,238 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/public-sans";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "../styles/theme.css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-sans: "Public Sans Variable", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  html {
+    @apply overflow-x-hidden font-sans;
+  }
+  body {
+    @apply bg-background text-foreground min-h-svh w-full font-sans;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 767px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container-page {
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 1280px;
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Launch UI–style utilities (mirrored from overmap-relay) ── */
+@layer utilities {
+  .bg-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+
+  .glass-1 {
+    @apply border-border from-card/80 to-card/40 dark:border-border/10 dark:border-b-border/5 dark:border-t-border/20 dark:from-card/5 dark:to-card/0 border bg-linear-to-b;
+  }
+  .glass-2 {
+    @apply border-border from-card/100 to-card/80 dark:border-border/10 dark:border-b-border/5 dark:border-t-border/20 dark:from-card/10 dark:to-card/5 border bg-linear-to-b;
+  }
+  .glass-3 {
+    @apply border-border from-card/30 to-card/20 dark:border-border/10 dark:border-t-border/20 dark:border-b-border/5 dark:from-primary/5 dark:to-primary/2 border bg-linear-to-b;
+  }
+
+  .fade-top-lg {
+    mask-image: linear-gradient(to bottom, transparent 15%, black 100%);
+  }
+  .fade-bottom-lg {
+    mask-image: linear-gradient(to top, transparent 15%, black 100%);
+  }
+  .fade-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 25%,
+      black 75%,
+      transparent 100%
+    );
+  }
+
+  .animate-appear {
+    animation: appear 0.6s forwards ease-out;
+  }
+  .animate-appear-zoom {
+    animation: appear-zoom 0.6s forwards ease-out;
+  }
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      transform: translateY(1rem);
+      filter: blur(0.5rem);
+    }
+    50% {
+      filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes appear-zoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-appear,
+  .animate-appear-zoom {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Subtle card hover (matches main site) */
+@media (prefers-reduced-motion: no-preference) {
+  [data-slot="card"] {
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease;
+  }
+  @media (min-width: 641px) {
+    [data-slot="card"]:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.06);
+    }
+    .dark [data-slot="card"]:hover {
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+    }
+  }
+  button:not(:disabled):active,
+  [role="button"]:not(:disabled):active {
+    transform: scale(0.98);
+  }
+}
+
+/* Prose tuning for blog/MDX */
+.prose-overmap {
+  @apply text-foreground;
+}
+.prose-overmap h1,
+.prose-overmap h2,
+.prose-overmap h3,
+.prose-overmap h4 {
+  @apply text-foreground tracking-tight font-semibold;
+}
+.prose-overmap p {
+  @apply text-foreground/85 leading-7;
+}
+.prose-overmap a {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+.prose-overmap code {
+  @apply rounded bg-muted px-1.5 py-0.5 text-[0.85em] font-mono;
+}
+.prose-overmap pre {
+  @apply rounded-lg border border-border bg-card p-4 overflow-x-auto text-sm;
+}
+.prose-overmap pre code {
+  @apply bg-transparent p-0 text-foreground/90;
+}
+.prose-overmap blockquote {
+  @apply border-l-2 border-primary/40 pl-4 text-muted-foreground italic;
+}
+.prose-overmap ul {
+  @apply list-disc pl-6 space-y-1;
+}
+.prose-overmap ol {
+  @apply list-decimal pl-6 space-y-1;
+}
+.prose-overmap hr {
+  @apply my-8 border-border;
 }

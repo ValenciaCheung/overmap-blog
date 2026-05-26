@@ -1,0 +1,69 @@
+---
+title: "代码 Review 模板（带打分 + 修复建议）"
+description: "把一段 diff 或一个 PR 链接喂给 AI，让它输出结构化的 review 意见：正确性 / 可读性 / 性能 / 安全 / 测试，每项打分。"
+category: "工程"
+tags: ["Code Review", "工程", "diff"]
+model: "Claude / GPT-4"
+date: "2026-05-25"
+prompt: |
+  你是一位资深 Senior Engineer，正在对下面这段代码做 Pull Request review。
+
+  请按以下结构输出：
+
+  ## TL;DR
+  一句话总结：这个 PR 主要做了什么 + 你建议 (approve / request changes / comment)
+
+  ## 评分（每项 1-5 分，5 = 优秀）
+  - 正确性：x/5
+  - 可读性：x/5
+  - 性能：x/5
+  - 安全性：x/5
+  - 测试覆盖：x/5
+
+  ## 必改问题（blocking）
+  列出必须修改才能合入的问题，每条包含：
+  - 位置（文件 / 行号）
+  - 问题描述
+  - 建议修法（直接给代码片段）
+
+  ## 可选优化（non-blocking）
+  风格、命名、性能微优化等
+
+  ## 学习点
+  这段代码有哪些值得团队成员学习的写法
+
+  约束：
+  - 不要复述代码做了什么
+  - 不要客套，直接给意见
+  - 如果代码很好，明说"无 blocking 问题"
+  - 涉及到框架习惯，引用官方文档链接
+
+  下面是 diff / 代码：
+
+  ```
+  {{在这里粘贴你的代码或 diff}}
+  ```
+---
+
+## 用法
+
+复制提示词，把 `{{...}}` 替换成你的 diff 内容（可以 `git diff main...HEAD` 拿到，或者粘 PR 的 Files Changed 视图）。
+
+## 为什么用这个结构
+
+- **TL;DR 在最上面** —— 团队 leader 扫一眼就知道决策
+- **打分量化** —— 多个 PR 横向比较时有数据
+- **必改 vs 可选分离** —— 避免 review 显得鸡蛋里挑骨头
+- **学习点** —— 让 review 变成团队成长机会，而不仅是 gating
+
+## 改写思路
+
+- **更严格** → 在约束里加 "默认 request changes，除非完全没问题"
+- **更宽松** → 加 "只关注 blocking 问题，可选优化超过 3 条要合并"
+- **特定语言/框架** → 在 prompt 开头加 "请按 Go / Rust / TypeScript / Django 社区惯例评判"
+
+## 坑点
+
+- 喂太长 diff 模型会抓不住重点。**单次 review 控制在 500 行以内**
+- 让 AI 找安全漏洞时，提醒它"只标真实可利用的，不要 false positive 吓人"
+- review 完后让一个 senior 人工抽检 1-2 条，AI 的 false positive 率仍然不低
