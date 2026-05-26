@@ -1,10 +1,18 @@
-# Cloudflare Pages config for `overmap-blog`.
-# Used by `wrangler pages deploy out` (and as a source of truth for the
-# Cloudflare Dashboard's auto-detected settings).
+# Cloudflare Workers (Static Assets) config for `overmap-blog`.
 #
-# Static export from `next.config.ts` (`output: "export"`) emits the entire
-# site to `out/` — that's what we ship to Cloudflare Pages.
+# Pure static site — Next.js `output: "export"` emits everything to `out/`,
+# and Cloudflare's Workers Assets serves it like a CDN. No worker code needed.
+#
+# Triggered by:
+#   npx wrangler deploy            (production)
+#   npx wrangler versions upload   (preview / non-prod branch)
 
 name = "overmap-blog"
 compatibility_date = "2026-05-26"
-pages_build_output_dir = "out"
+
+[assets]
+directory = "./out"
+# Map /blog → /blog.html, /blog/foo → /blog/foo/index.html (or /blog/foo.html)
+html_handling = "auto-trailing-slash"
+# Serve the prebuilt 404.html on unknown routes
+not_found_handling = "404-page"
