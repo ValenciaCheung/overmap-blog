@@ -1,114 +1,188 @@
 # 部署：blog.overmap.org
 
-## 1. 推到 GitHub
+整站是**纯静态导出**（`next.config.ts` 配了 `output: "export"`），所以可以丢到任何静态托管，零运行时。Cloudflare Pages 是首选。
 
-```bash
-# 项目根目录
-git add -A
-git commit -m "init: overmap blog scaffold"
-git remote add origin git@github.com:overmapai/overmap-blog.git
-git push -u origin main
-```
+---
 
-> 如果还没有 GitHub 组织 `overmapai`，可以先用个人账号 push，之后改 remote。
+## 路线 A：Cloudflare Pages — Dashboard 自动接入（推荐，~5 分钟）
 
-## 2. Vercel 接入（推荐）
+### 1. 接入 GitHub 仓库
 
-1. 打开 [vercel.com/new](https://vercel.com/new)，选择刚推的 `overmap-blog` 仓库
-2. Vercel 自动识别 **Next.js** ✅
-3. **Framework**: `Next.js`（自动）
-4. **Build Command**: `pnpm build`（自动）
-5. **Install Command**: `pnpm install`
-6. **Environment Variables** (可选):
-   - `GITHUB_TOKEN` —— 给 `scripts/sync-github.ts` 用，避免 60 次 / 小时的匿名 rate limit。
-     用任意 PAT 即可，建议只勾 `public_repo` 读权限。
-7. 点 Deploy。首次构建 ~1-2 分钟。
+1. 打开 [https://dash.cloudflare.com/](https://dash.cloudflare.com/) → 左侧 **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
+2. 授权 Cloudflare 访问 GitHub，选择 `ValenciaCheung/overmap-blog`
+3. 填以下参数：
 
-## 3. DNS：绑定 blog.overmap.org
+   | 字段 | 值 |
+   |------|------|
+   | Project name | `overmap-blog` |
+   | Production branch | `main` |
+   | Framework preset | **Next.js (Static HTML Export)** |
+   | Build command | `pnpm install --config.minimumReleaseAge=0 && pnpm build` |
+   | Build output directory | `out` |
+   | Root directory | (留空) |
 
-在 `overmap.org` 主域所属的 DNS 服务商（Cloudflare / 阿里云 / Namecheap 等）加一条记录：
+4. **Environment variables**（可选但推荐）：
+   - `NODE_VERSION` = `22`
+   - `GITHUB_TOKEN` = 你的 PAT（避免 GitHub API 60次/小时的匿名 rate limit；只需 `public_repo` 读权限即可）
 
-| Type | Name | Value | TTL |
-|------|------|-------|-----|
-| `CNAME` | `blog` | `cname.vercel-dns.com` | Auto / 600 |
+5. 点 **Save and Deploy**。第一次 build ~2 分钟。
 
-> 用 Cloudflare 的话，注意 **Proxy 状态设为 DNS only**（灰色云）。Vercel 已经做了 CDN，Cloudflare 再代理一层会导致重定向死循环或 SSL 报错。
+### 2. 绑定自定义域 blog.overmap.org
 
-回到 Vercel 项目 → Settings → Domains，添加 `blog.overmap.org`。Vercel 会自动签发 SSL（Let's Encrypt），通常 1-2 分钟生效。
+部署成功后：
+
+1. Cloudflare Dashboard → 你的 Pages 项目 → **Custom domains** → **Set up a custom domain**
+2. 输入 `blog.overmap.org`，按提示一步接入。
+
+   - 如果 `overmap.org` 主域已经在 Cloudflare 托管 → 一键完成，DNS 记录自动建好
+   - 如果不在 Cloudflare → 到主域 DNS 服务商加一条：
+
+     | Type | Name | Value |
+     |------|------|-------|
+     | `CNAME` | `blog` | `<你的项目>.pages.dev` |
+
+3. SSL 证书 Cloudflare 自动签发（1-2 分钟）
 
 验证：
 
 ```bash
 curl -I https://blog.overmap.org
-# 期望：HTTP/2 200，server: Vercel
+# 期望：HTTP/2 200，server: cloudflare
 ```
 
-## 4. 同步策略
+---
 
-### GitHub 数据
+## 路线 B：Cloudflare Pages — 本地 CLI（适合 CI / 快速 dry-run）
 
-`data/hub-cache.json` 是 build 期生成的（`prebuild` hook 跑 `sync:github`）。每次 deploy 自动刷新。
-
-如果想 **定时刷新**（比如每天凌晨抓最新 star 数），在 Vercel 项目 → Settings → Cron Jobs 加一条：
-
-```
-0 18 * * *  GET https://blog.overmap.org/api/revalidate?secret=xxx
-```
-
-然后写一个 `app/api/revalidate/route.ts` 用 `revalidatePath('/hub')`。
-
-> 简化版：先不开 cron，每次 push 内容自动 redeploy 就够了。
-
-### 内容更新
-
-所有内容（MDX / JSON / seeds）都在 git 里。流程：
-
-1. 本地写 / 编辑 → `pnpm dev` 预览
-2. `git add` → `git commit` → `git push`
-3. Vercel 自动 build & deploy
-
-## 5. 备选：Cloudflare Pages
-
-如果不想用 Vercel：
-
-1. Cloudflare Dashboard → Pages → Create a project
-2. 连接 GitHub 仓库
-3. **Build command**: `pnpm build`
-4. **Build output directory**: `.next` （或用 `@cloudflare/next-on-pages` 适配器）
-5. **Environment variable**: `NODE_VERSION=20`, 可选 `GITHUB_TOKEN`
-6. 加 Custom domain `blog.overmap.org`
-
-> Next 16 + App Router 在 Cloudflare Pages 上需要 `@cloudflare/next-on-pages` 适配层，配置比 Vercel 复杂。建议先用 Vercel。
-
-## 6. 备选：自托管 VPS
-
-如果想跟主站一起放在 Vultr Osaka：
+如果不想接 GitHub（或者 CI 跑 build 慢，想本地 build 再推）：
 
 ```bash
-# 在 VPS 上
-git clone https://github.com/overmapai/overmap-blog.git
-cd overmap-blog
-pnpm install
-pnpm build
-pm2 start "pnpm start" --name overmap-blog
+# 一次性
+pnpm dlx wrangler login                  # 浏览器授权
+
+# 每次发布
+pnpm build                               # 生成 out/
+pnpm deploy:cf                           # = wrangler pages deploy out --project-name overmap-blog
 ```
 
-然后用 Caddy / Nginx 反代 `blog.overmap.org` 到 `localhost:3000`。
+预览部署（不会替换 production）：
 
-## 7. SEO checklist
+```bash
+pnpm deploy:cf:preview
+# 输出一个临时 *.pages.dev 链接
+```
 
-- [ ] `siteConfig.url` 改成正式域名（`src/lib/site.ts`）
-- [ ] `public/` 放 `favicon.ico`、`og-image.png`（1200x630）
-- [ ] `app/sitemap.ts` 自动生成（建议加上）
-- [ ] `app/robots.ts` 允许爬虫
-- [ ] Google Search Console 提交 sitemap.xml
-- [ ] 百度站长（如果有中国大陆访问需求）
+`wrangler.toml` 已经配好 `pages_build_output_dir = "out"`，wrangler 知道部署哪个目录。
 
-## 8. 故障排查
+---
 
-| 症状 | 可能原因 | 处理 |
-|------|---------|------|
-| build 时 `sync:github` 报 403 | 匿名 rate limit | 加 `GITHUB_TOKEN` 环境变量 |
-| 部分 MDX 渲染异常 | frontmatter 缺字段 | 看 build log 里的 console.warn |
-| 暗黑模式切换闪烁 | next-themes 未挂载 | 已在 layout.tsx 加 `suppressHydrationWarning` |
-| 自定义域 SSL 报错 | Cloudflare proxy 开启 | 关闭 proxy（DNS only） |
+## 内容更新流程
+
+```
+1. 本地写 / 编辑 MDX / JSON
+2. pnpm dev    → http://localhost:3000 预览
+3. git push    → Cloudflare 自动 build & 上线
+```
+
+GitHub 数据（`/hub`）每次 build 时通过 `scripts/sync-github.ts` 重新抓取（`prebuild` hook 触发）。如果想 **定时刷新**（每天抓最新 star 数），在 Cloudflare Pages 项目 → **Deployments** → **Triggers** 加一条 cron `0 18 * * *`。
+
+---
+
+## 备选：纯 GitHub Pages
+
+如果不用 Cloudflare：
+
+1. 仓库 → **Settings** → **Pages** → Source 选 **GitHub Actions**
+2. 加 `.github/workflows/pages.yml`：
+
+   ```yaml
+   name: Deploy to Pages
+   on:
+     push:
+       branches: [main]
+   jobs:
+     build:
+       runs-on: ubuntu-latest
+       permissions: { pages: write, id-token: write }
+       steps:
+         - uses: actions/checkout@v4
+         - uses: pnpm/action-setup@v4
+           with: { version: 11 }
+         - uses: actions/setup-node@v4
+           with: { node-version: 22, cache: pnpm }
+         - run: pnpm install --config.minimumReleaseAge=0
+         - run: pnpm build
+         - uses: actions/upload-pages-artifact@v3
+           with: { path: out }
+     deploy:
+       needs: build
+       runs-on: ubuntu-latest
+       environment:
+         name: github-pages
+         url: ${{ steps.deployment.outputs.page_url }}
+       steps:
+         - id: deployment
+           uses: actions/deploy-pages@v4
+   ```
+
+3. GitHub Pages 上线后路径是 `https://valenciacheung.github.io/overmap-blog/` —— 需要在 `next.config.ts` 加 `basePath: "/overmap-blog"`，否则资源 404。Cloudflare Pages 不需要这一步。
+
+---
+
+## 备选：自托管 VPS（跟主站同居）
+
+放 Vultr Osaka VPS 上：
+
+```bash
+# VPS 端
+git clone https://github.com/ValenciaCheung/overmap-blog.git
+cd overmap-blog
+pnpm install --config.minimumReleaseAge=0
+pnpm build
+# 把 out/ 整个挂到 nginx
+sudo cp -r out/* /var/www/blog.overmap.org/
+```
+
+nginx 配置：
+
+```nginx
+server {
+  listen 443 ssl http2;
+  server_name blog.overmap.org;
+
+  root /var/www/blog.overmap.org;
+  index index.html;
+
+  # static export 的 SPA 风格路由 fallback
+  location / { try_files $uri $uri.html $uri/index.html =404; }
+
+  # Next.js 资源带哈希，可以长缓存
+  location /_next/ {
+    expires 1y;
+    add_header Cache-Control "public, immutable";
+  }
+}
+```
+
+---
+
+## SEO checklist（上线前）
+
+- [ ] `src/lib/site.ts` 把 `siteConfig.url` 改成正式域名
+- [ ] 写 `app/sitemap.ts`（自动从 blog/tools/prompts 数据生成）
+- [ ] 写 `app/robots.ts`
+- [ ] `public/` 放 `og-image.png`（1200×630，跟主站统一品牌）
+- [ ] Google Search Console / 百度站长 提交 sitemap.xml
+- [ ] Plausible / Umami 等无 cookie 统计接入
+
+---
+
+## 故障排查
+
+| 症状 | 原因 | 处理 |
+|------|------|------|
+| Cloudflare build 报 `pnpm: command not found` | 没指定 packageManager | package.json 加 `"packageManager": "pnpm@11.3.0"` |
+| `prebuild` 在 Cloudflare 上失败 | 抓 GitHub API 触发 rate limit | 项目设置加 env var `GITHUB_TOKEN` |
+| 部分图片 404 | 静态导出禁用了 Image Optimizer | 已设 `images.unoptimized: true`，应该 OK；如果还有问题检查图片路径大小写 |
+| 自定义域 SSL 报错 | Cloudflare Proxy 状态错误 | 主域不在 Cloudflare 时，灰色云（DNS only）；在 Cloudflare 时，橙色云（Proxied）|
+| 暗黑模式切换闪烁 | next-themes 未挂载完 | 已加 `suppressHydrationWarning`，正常情况下不会闪 |

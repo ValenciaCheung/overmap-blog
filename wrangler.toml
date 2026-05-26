@@ -1,0 +1,10 @@
+# Cloudflare Pages config for `overmap-blog`.
+# Used by `wrangler pages deploy out` (and as a source of truth for the
+# Cloudflare Dashboard's auto-detected settings).
+#
+# Static export from `next.config.ts` (`output: "export"`) emits the entire
+# site to `out/` — that's what we ship to Cloudflare Pages.
+
+name = "overmap-blog"
+compatibility_date = "2026-05-26"
+pages_build_output_dir = "out"
