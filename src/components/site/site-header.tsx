@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, ExternalLink } from "lucide-react";
 import { useState } from "react";
@@ -24,7 +25,22 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container-page flex h-14 items-center gap-4">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="inline-block size-2 rounded-full bg-primary" aria-hidden />
+          <Image
+            src="/logo-on-light.png"
+            alt="Overmap"
+            width={28}
+            height={28}
+            priority
+            className="size-7 dark:hidden"
+          />
+          <Image
+            src="/logo-on-dark.png"
+            alt="Overmap"
+            width={28}
+            height={28}
+            priority
+            className="size-7 hidden dark:block"
+          />
           <span>{siteConfig.name}</span>
         </Link>
 

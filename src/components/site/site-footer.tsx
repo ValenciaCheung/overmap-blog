@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
@@ -7,7 +8,20 @@ export function SiteFooter() {
       <div className="container-page py-10 grid gap-8 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 font-semibold">
-            <span className="inline-block size-2 rounded-full bg-primary" aria-hidden />
+            <Image
+              src="/logo-on-light.png"
+              alt="Overmap"
+              width={24}
+              height={24}
+              className="size-6 dark:hidden"
+            />
+            <Image
+              src="/logo-on-dark.png"
+              alt="Overmap"
+              width={24}
+              height={24}
+              className="size-6 hidden dark:block"
+            />
             {siteConfig.name}
           </div>
           <p className="mt-2 text-sm text-muted-foreground max-w-md">
