@@ -1,0 +1,83 @@
+[
+  {
+    "hash": "2b5373e062d96d6c86a492001e16e2fd29ba18b0",
+    "shortHash": "2b5373e",
+    "date": "2026-05-26T23:48:05-07:00",
+    "author": "Valencia Cheung",
+    "subject": "feat: wave 2 — 190 tools, home stats, blog tag filter, RSS feed",
+    "body": "- tools.json: 124 → 190 (added 66 more: HuggingChat, Kimi, Doubao, Wenxin, ChatGLM, Civitai, ComfyUI, Hedra, Tavus, Aider, Sweep, Lindy, MultiOn, Harvey, Sierra, Outerbase, Akkio etc.)",
+    "filesChanged": 8
+  },
+  {
+    "hash": "5f67dcde34cb89a582d3239f1024eee97219e183",
+    "shortHash": "5f67dcd",
+    "date": "2026-05-26T23:42:03-07:00",
+    "author": "Valencia Cheung",
+    "subject": "feat: massive content expansion (124 tools, 8 blogs, 18 prompts, SEO)",
+    "body": "- tools.json: 12 → 124 entries across 15 categories (toolify.ai-style)",
+    "filesChanged": 25
+  },
+  {
+    "hash": "28bbbdabf61e1babd13960d31ac4d20b192d9da3",
+    "shortHash": "28bbbda",
+    "date": "2026-05-26T21:19:25-07:00",
+    "author": "Valencia Cheung",
+    "subject": "feat(hub): /hub/skills — auto-sync anthropics/skills + install commands",
+    "body": "- scripts/sync-skills.ts pulls SKILL.md from all 17 dirs in anthropics/skills",
+    "filesChanged": 14
+  },
+  {
+    "hash": "ac04e5170f82975055fb805c86f42b8db46a353a",
+    "shortHash": "ac04e51",
+    "date": "2026-05-26T17:02:46-07:00",
+    "author": "Valencia Cheung",
+    "subject": "fix(ci): pin pnpm to 10.11.0 (drop 11.x supply-chain policy)",
+    "body": "pnpm 11 enforces a 24h minimumReleaseAge check during lockfile",
+    "filesChanged": 2
+  },
+  {
+    "hash": "919df5b9c09a2f65c375ecdd1765fd6087f80821",
+    "shortHash": "919df5b",
+    "date": "2026-05-26T16:51:46-07:00",
+    "author": "Valencia Cheung",
+    "subject": "fix(ci): .npmrc minimum-release-age=0 to unblock Cloudflare build",
+    "body": "Cloudflare's auto-detected pnpm@11.3.0 runs 'pnpm install --frozen-lockfile'",
+    "filesChanged": 1
+  },
+  {
+    "hash": "107405e03bc9fbd4d60bec1f5dceb38deeced36d",
+    "shortHash": "107405e",
+    "date": "2026-05-26T16:42:55-07:00",
+    "author": "Valencia Cheung",
+    "subject": "deploy: switch wrangler.toml to Workers Static Assets format",
+    "body": "Cloudflare's new \"Workers Builds\" flow (replaces classic Pages) needs",
+    "filesChanged": 1
+  },
+  {
+    "hash": "cc729ae47d8534ebccb5e4f89382ef1dfe21824b",
+    "shortHash": "cc729ae",
+    "date": "2026-05-26T16:21:55-07:00",
+    "author": "Valencia Cheung",
+    "subject": "deploy: static export to Cloudflare Pages",
+    "body": "- next.config.ts: output: 'export' + images.unoptimized",
+    "filesChanged": 5
+  },
+  {
+    "hash": "7369f367137776f953a7eeb1a0c904d334dadc34",
+    "shortHash": "7369f36",
+    "date": "2026-05-26T16:19:04-07:00",
+    "author": "Valencia Cheung",
+    "subject": "feat: brand logo + adaptive header/footer",
+    "body": "- Add Overmap brand mark from main site (colored O for dark bg, black O for light bg)",
+    "filesChanged": 9
+  },
+  {
+    "hash": "eb4fc9cb2d306b587af2063b0acaa638516191a0",
+    "shortHash": "eb4fc9c",
+    "date": "2026-05-26T16:14:57-07:00",
+    "author": "Valencia Cheung",
+    "subject": "init: overmap blog v0.1 — content hub MVP",
+    "body": "Next.js 16 App Router + Tailwind v4 + shadcn/ui (radix-nova),",
+    "filesChanged": 66
+  }
+]

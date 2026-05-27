@@ -19,3 +19,10 @@ export function getFeaturedTools(limit = 6): ToolItem[] {
     .filter((t) => t.featured)
     .slice(0, limit);
 }
+
+export function getTrendingTools(limit = 6): ToolItem[] {
+  return getAllTools()
+    .filter((t) => t.badge === "trending" || t.badge === "new")
+    .sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0))
+    .slice(0, limit);
+}

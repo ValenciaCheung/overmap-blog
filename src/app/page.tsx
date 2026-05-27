@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles, Newspaper, Wrench, Code2, Brain } from "lucide-react";
+import { ArrowRight, Sparkles, Newspaper, Wrench, Code2, Brain, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BlogCard } from "@/components/site/blog-card";
 import { ToolCard } from "@/components/site/tool-card";
 import { RepoCard } from "@/components/site/repo-card";
 import { getAllPosts } from "@/lib/blog";
-import { getAllTools, getFeaturedTools } from "@/lib/tools";
+import { getAllTools, getFeaturedTools, getTrendingTools } from "@/lib/tools";
 import { getAllRepos, getFeaturedRepos } from "@/lib/hub";
 import { getAllSkills } from "@/lib/skills";
 import { getAllPrompts } from "@/lib/prompts";
@@ -14,6 +14,7 @@ import { getAllPrompts } from "@/lib/prompts";
 export default function HomePage() {
   const latestPosts = getAllPosts().slice(0, 3);
   const featuredTools = getFeaturedTools(6);
+  const trendingTools = getTrendingTools(6);
   const featuredRepos = getFeaturedRepos(3);
   const stats = {
     tools: getAllTools().length,
@@ -27,6 +28,20 @@ export default function HomePage() {
     <div className="pb-12">
       <Hero stats={stats} />
       <SectionDivider />
+
+      <FeedSection
+        eyebrow="本月热门 · Trending"
+        title="社区刚火起来的 AI 工具"
+        href="/tools"
+        icon={<Flame className="size-4" />}
+      >
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {trendingTools.map((t) => (
+            <ToolCard key={t.id} tool={t} />
+          ))}
+        </div>
+      </FeedSection>
+
       <FeedSection
         eyebrow="最新博客"
         title="视频文字稿与 AI 实操笔记"

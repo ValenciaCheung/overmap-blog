@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/hub`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/hub/skills`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/prompts`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/changelog`, lastModified: now, changeFrequency: "weekly", priority: 0.4 },
   ];
 
   const blogPages: MetadataRoute.Sitemap = getAllPostSlugs()

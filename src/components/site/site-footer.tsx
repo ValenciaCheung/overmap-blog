@@ -39,6 +39,11 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/changelog" className="hover:text-foreground">
+                Changelog
+              </Link>
+            </li>
           </ul>
         </div>
 
