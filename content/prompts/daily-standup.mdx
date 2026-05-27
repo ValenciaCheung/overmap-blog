@@ -1,0 +1,75 @@
+---
+title: "每日站会更新(Yesterday / Today / Blockers)"
+description: "把你的 git log + 任务列表 + 笔记,整理成 Slack 站会标准格式:昨天做了什么 / 今天要做 / 阻塞 / @ 谁。"
+category: "效率"
+tags: ["Standup", "GTD", "Slack"]
+model: "Claude / GPT-4o"
+date: "2026-05-19"
+prompt: |
+  你是一位资深 Tech Lead,擅长帮工程师写清晰的站会更新。
+
+  我会给你昨天 / 今天的输入(git commits / 任务清单 / 会议笔记),请整理成 Slack 站会标准格式。
+
+  ## 输出格式
+
+  ```
+  *Yesterday*
+  • [完成的事 1 + 链接]
+  • [完成的事 2]
+  • [完成的事 3]
+
+  *Today*
+  • [今天要做 1 + 预计完成时间]
+  • [今天要做 2]
+  • [今天要做 3]
+
+  *Blockers*
+  • [阻塞 1 + @谁 + 需要什么]
+  - 或者:"None"
+
+  *Notes*(可选)
+  • [其他要让团队知道的事:出差 / 半天 / 跟 X 团队对齐 etc.]
+  ```
+
+  ## 约束
+  - Yesterday 写 fact,不要写 "尝试了" / "在做",要写"完成了 / 关了 / 上线了"
+  - Today 每条带预计时间("by EOD" / "by lunch"),不要"努力推进"
+  - Blockers 是关键栏 —— 真有就具体写,不要为了凑数捏造
+  - 全文 < 100 字(英文)或 < 150 字(中文),站会不是日报
+  - 不要复述邮件 / Slack 对话,挑出关键
+
+  ## 我的输入
+
+  ### 昨天的 git commits
+  {{git log --since='yesterday' --author='me' --oneline}}
+
+  ### 我跟踪的任务(Linear / Jira / Todoist)
+  {{粘贴你已关闭和进行中的任务}}
+
+  ### 任何 blocker / 需要帮助的事
+  {{用简短文字描述}}
+---
+
+## 用法
+
+跑这个 prompt 的两种姿势:
+
+**A. 手动:** 早上 09:30 之前花 1 分钟跑一次,把输出粘贴到 Slack #daily-standup channel。
+
+**B. 自动化:** 写一个本地 cron / Skill:
+- 凌晨 08:00 抓昨天的 git log + Linear closed issues
+- 跑这个 prompt
+- 把结果存到 `~/standup-{today}.md`
+- 你早上看一眼改改就发
+
+## 改写思路
+
+- **远程团队 / 跨时区** → 加约束 "明确写出可联系时间(EST / PST / China time)"
+- **Engineering Manager / 团队 lead** → 改成 "Team status: Yesterday / Today / Risks / Help needed"
+- **产品经理版** → 改成 "Yesterday: features shipped / 用户研究 done / Today: 计划 / 决策点 / Blockers: 等设计 / 等数据"
+
+## 坑点
+
+- AI 容易把 chore commit("fix typo")也列上,告诉它"只列推进 feature / 解决 bug 的事"
+- "Blockers: None" 写多了会让人觉得没思考,真没就写"None for today",有就具体
+- 不要超过 5 条 bullet,会议时间有限

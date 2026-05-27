@@ -1,0 +1,50 @@
+---
+title: "Anthropic Skill 骨架(SKILL.md + references)"
+description: "给一个工作流意图,产出符合 anthropics/skills 规范的 SKILL.md 文件,包含 frontmatter + 触发条件 + steps + references 引用。"
+category: "工程"
+tags: ["Claude Code", "Skill", "Anthropic"]
+model: "Claude / GPT-4o"
+date: "2026-05-23"
+prompt: |
+  你是熟悉 anthropics/skills 仓库的资深 Skill 工程师。请基于我给的工作流意图,生成一个符合规范的 SKILL.md 骨架。
+
+  规范要求(必须遵守):
+  1. 文件开头是 YAML frontmatter,只有两个字段:
+     - `name`: kebab-case,简短(< 30 字符)
+     - `description`: 一段长描述。**必须**包含三部分:做什么 / 何时触发 / 触发关键词。description 越详细,Claude 触发越准。
+  2. 正文 Markdown,结构如下:
+     - `# {Name}` 大标题
+     - 1-2 段简短介绍
+     - `## When to use` —— 列出明确的触发场景和反例(when NOT to use)
+     - `## Workflow` —— 步骤化的执行流程,带子标题
+     - `## References` —— 引用的资源(如果有的话,列在 `references/` 子目录)
+     - `## Examples` —— 至少 1 个具体输入 + 期望输出
+  3. 语气:第二人称对 Claude 说话,不要"用户应该"
+  4. 长度 < 150 行(简短的 skill 反而更好用)
+
+  产出:
+  1. 完整的 SKILL.md 文件内容
+  2. references/ 子目录建议(给 2-3 个文件名 + 用途)
+  3. 测试 prompt(用来验证 Claude 真的会触发这个 skill)
+
+  工作流意图:
+  {{用一段话描述你想让 Claude 自动做的事,例如:"每次我在写新博客 MDX 时,自动按统一格式生成 frontmatter"}}
+---
+
+## 用法
+
+写完 SKILL.md 后,放到 `~/.claude/skills/{name}/SKILL.md`,Claude Code 自动加载。
+
+测试触发:用模型给的"测试 prompt"在新 session 跑一遍,确认 Claude 真的调用了这个 skill(可以从 Tool calls 里看到 Read 了 SKILL.md)。
+
+## 改写思路
+
+- **企业 / Team Skill** → 在约束加 "skill 需要被 dev/staff 多人复用,所以写清楚 assumptions 和 constraints"
+- **MCP-integrating Skill** → 加约束 "需要调用 specific MCP tool,在 Workflow 里明确 MCP 工具名"
+- **教学型 Skill(给新人)** → 加约束 "Workflow 步骤越细越好,每步给反例"
+
+## 坑点
+
+- AI 写出来的 `description` 经常太短/泛,**关键是放具体触发关键词**,例如 "trigger on: 用户提到 'new blog post' / 'write a blog' / '新建博客' / 'MDX'"
+- 不要在 SKILL.md 里堆资源,把样板代码 / 长 reference 放 references/ 子目录,SKILL.md 提一句 "see references/X.md"
+- 注意:已有的官方 Anthropic skills (见 [/hub/skills](/hub/skills)) 是最好的样板

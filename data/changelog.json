@@ -1,5 +1,23 @@
 [
   {
+    "hash": "1b7f215e3204838dcfda34029484b3cb5e5d56b9",
+    "shortHash": "1b7f215",
+    "date": "2026-05-26T23:53:40-07:00",
+    "author": "Valencia Cheung",
+    "subject": "feat: wave 4 — global search (cmd+K) across all 250 entries",
+    "body": "- scripts/generate-search-index.ts: bundles tools/skills/repos/prompts/blogs/pages",
+    "filesChanged": 7
+  },
+  {
+    "hash": "6c72f02a5f4f7a7044dc9c3ceae75effc62173c1",
+    "shortHash": "6c72f02",
+    "date": "2026-05-26T23:50:53-07:00",
+    "author": "Valencia Cheung",
+    "subject": "feat: wave 3 — trending tools, /changelog page, footer links",
+    "body": "- /changelog new route: timeline of last 60 commits (skip chore/merge/Initial)",
+    "filesChanged": 9
+  },
+  {
     "hash": "2b5373e062d96d6c86a492001e16e2fd29ba18b0",
     "shortHash": "2b5373e",
     "date": "2026-05-26T23:48:05-07:00",

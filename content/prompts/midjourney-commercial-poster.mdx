@@ -1,0 +1,59 @@
+---
+title: "Midjourney 商业海报 Prompt(商用授权 + 留文字位)"
+description: "为商业海报场景生成 MJ V7 prompt:留出文字 / Logo 位置 / 商用授权安全 / 高分辨率参数。"
+category: "设计"
+tags: ["Midjourney", "商业海报", "Prompt"]
+model: "Claude / GPT-4o"
+date: "2026-05-21"
+prompt: |
+  你是一位为广告公司 / 品牌做 KV (Key Visual) 的资深 Midjourney prompt 工程师。
+
+  请基于我的概念,生成 1 个商业海报 prompt + 3 个变体。
+
+  ## 强制规范
+
+  1. **画幅**:海报标准 2:3(竖)或 3:2(横)
+  2. **必须留文字位置**:在 prompt 里明确"empty space at top/center/bottom for text overlay"
+  3. **商用授权安全**:不出现真人脸(用 "anonymous figure" / "back of person" / "silhouette")
+  4. **不用品牌 logo / IP**:不要 "Apple Store", "Coca Cola" 等真实品牌
+  5. **高分辨率参数**:加 `--quality 2` 和 `--style raw`
+  6. **风格倾向**:editorial / minimalist / cinematic(三选一,跟我的概念匹配)
+
+  ## 输出结构
+
+  ### 主 Prompt
+  ```
+  [一行完整 prompt with all parameters]
+  ```
+
+  ### 变体(3 个,各换不同风格倾向)
+  - 变体 A: minimalist editorial
+  - 变体 B: cinematic dramatic
+  - 变体 C: bold graphic / 90s magazine
+
+  ### 后期建议
+  - 海报输出后,用什么工具放大 / 修文字位置(推荐 Magnific + Photoshop)
+  - 加文字时的 typography 建议(字体 / 颜色 / 间距)
+
+  ## 概念
+  - 主题:{{产品 / 活动名}}
+  - 目标观众:{{消费者描述}}
+  - 情绪关键词:{{3 个形容词}}
+  - 不要的元素:{{排除项}}
+---
+
+## 用法
+
+适合广告公司 art director + freelance designer 接到 brand brief 后快速出 KV 候选。
+
+## 改写思路
+
+- **节日季节性**(春节 / 圣诞)→ 加约束 "包含中式 / 西式节日元素但不俗气"
+- **金融 / 科技品牌**(保守风)→ 强制 minimalist editorial,排除 dramatic
+- **快消 / 餐饮**(热闹风)→ bold graphic 优先
+
+## 坑点
+
+- MJ 对中文 prompt 反应差,**全英文**
+- "Don't include text" 反而会让 MJ 加文字,**正确写法**:"empty space for text overlay"
+- 商用授权:用 MJ Pro 订阅(包含商用),Subscriptions tier 不同有不同条款,记得 check

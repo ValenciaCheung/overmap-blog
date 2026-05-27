@@ -221,5 +221,46 @@
   { "id": "outerbase", "name": "Outerbase", "url": "https://www.outerbase.com", "description": "现代数据库 UI + AI Copilot,问问题就出 SQL + 图表。", "category": "data", "tags": ["Database", "SQL"], "pricing": "freemium", "popularity": 55, "logo": "🟦" },
 
   { "id": "paradox", "name": "Paradox", "url": "https://www.paradox.ai", "description": "招聘 AI 助手 Olivia,自动筛简历 / 安排面试,大企业用。", "category": "business", "tags": ["HR", "Recruiting"], "pricing": "paid", "popularity": 50, "logo": "🟧" },
-  { "id": "hirevue", "name": "HireVue", "url": "https://www.hirevue.com", "description": "AI 视频面试评估,世界 500 强大批量招聘的标配。", "category": "business", "tags": ["HR", "Interview"], "pricing": "paid", "popularity": 45, "logo": "🎥" }
+  { "id": "hirevue", "name": "HireVue", "url": "https://www.hirevue.com", "description": "AI 视频面试评估,世界 500 强大批量招聘的标配。", "category": "business", "tags": ["HR", "Interview"], "pricing": "paid", "popularity": 45, "logo": "🎥" },
+
+  { "id": "felo", "name": "Felo Search", "url": "https://felo.ai", "description": "日本团队出品的 AI 搜索引擎,多语言强,适合做学术 / 跨语言研究。", "category": "search", "tags": ["Search", "Multilingual"], "pricing": "freemium", "popularity": 55, "logo": "🌸" },
+  { "id": "replicate", "name": "Replicate", "url": "https://replicate.com", "description": "云上跑开源 ML 模型的市场,SD / Flux / Llama 一键 API 调用。", "category": "code", "tags": ["ML Hosting", "API"], "pricing": "freemium", "popularity": 75, "logo": "🔁" },
+  { "id": "huggingface", "name": "Hugging Face", "url": "https://huggingface.co", "description": "AI 模型与数据集中央仓库,Models / Datasets / Spaces 三件套。", "category": "code", "tags": ["ML", "Models"], "pricing": "freemium", "popularity": 92, "logo": "🤗" },
+  { "id": "anyscale", "name": "Anyscale", "url": "https://www.anyscale.com", "description": "Ray 团队出品的大模型托管 + 训练平台,适合企业自训模型。", "category": "code", "tags": ["Training", "Enterprise"], "pricing": "paid", "popularity": 55, "logo": "🔵" },
+
+  { "id": "photoroom", "name": "Photoroom", "url": "https://www.photoroom.com", "description": "电商图像 AI:抠图 / 换背景 / 批量处理,亚马逊卖家神器。", "category": "image", "tags": ["E-commerce", "Background"], "pricing": "freemium", "popularity": 65, "logo": "🛍️" },
+  { "id": "builder-io", "name": "Builder.io", "url": "https://www.builder.io", "description": "Visual CMS + 设计转 React 代码,Figma 直接转可用组件。", "category": "code", "tags": ["CMS", "Design-to-code"], "pricing": "freemium", "popularity": 65, "logo": "🏗️" },
+  { "id": "magic-patterns", "name": "Magic Patterns", "url": "https://www.magicpatterns.com", "description": "Prompt 到 UI mockup,适合 PM 快速画原型,可导出 React。", "category": "design", "tags": ["UI", "Mockup"], "pricing": "freemium", "popularity": 55, "logo": "🟩" },
+  { "id": "polypane", "name": "Polypane", "url": "https://polypane.app", "description": "为开发者做的浏览器,同时跑 5+ 视口测响应式,内置 a11y / SEO 检查。", "category": "code", "tags": ["Browser", "Testing"], "pricing": "paid", "popularity": 50, "logo": "🪟" },
+
+  { "id": "arc-browser", "name": "Arc Browser", "url": "https://arc.net", "description": "The Browser Company 出品的 AI-first 浏览器,Max 模式带 LLM 总结网页。", "category": "productivity", "tags": ["Browser", "AI Sidekick"], "pricing": "free", "popularity": 75, "logo": "🌈" },
+  { "id": "comet-browser", "name": "Comet by Perplexity", "url": "https://comet.perplexity.ai", "description": "Perplexity 推出的 AI 浏览器,Agent 直接帮你浏览 / 总结 / 填表单。", "category": "productivity", "tags": ["Browser", "Agent"], "pricing": "paid", "badge": "new", "popularity": 70, "logo": "☄️" },
+  { "id": "shortwave", "name": "Shortwave", "url": "https://www.shortwave.com", "description": "前 Google Inbox 团队做的 Gmail 替代 client,AI 总结 / 写信 / 搜索深度集成。", "category": "productivity", "tags": ["Email", "Gmail"], "pricing": "freemium", "popularity": 65, "logo": "📧" },
+  { "id": "superhuman", "name": "Superhuman", "url": "https://superhuman.com", "description": "高端邮件 client,Superhuman AI 帮你写回信和总结线索。", "category": "productivity", "tags": ["Email"], "pricing": "paid", "popularity": 60, "logo": "📨" },
+  { "id": "heptabase", "name": "Heptabase", "url": "https://heptabase.com", "description": "视觉化笔记 + AI,把研究 / 学习内容做成 whiteboard 思维网。", "category": "productivity", "tags": ["Notes", "Visual"], "pricing": "paid", "popularity": 55, "logo": "🟧" },
+  { "id": "anytype", "name": "Anytype", "url": "https://anytype.io", "description": "开源、本地优先的 PKM,Notion 加密替代,带 AI 助手。", "category": "productivity", "tags": ["PKM", "Open Source", "Privacy"], "pricing": "freemium", "popularity": 60, "logo": "🔷" },
+  { "id": "logseq", "name": "Logseq", "url": "https://logseq.com", "description": "开源大纲笔记,基于本地 markdown,AI 模块 (Logseq Copilot)。", "category": "productivity", "tags": ["PKM", "Open Source"], "pricing": "free", "popularity": 65, "logo": "🟢" },
+
+  { "id": "whimsical", "name": "Whimsical AI", "url": "https://whimsical.com/ai", "description": "在线流程图 / 思维导图工具,带 AI 自动生成节点。", "category": "design", "tags": ["Diagram", "Flowchart"], "pricing": "freemium", "popularity": 65, "logo": "🟣" },
+  { "id": "mermaid-chart", "name": "Mermaid Chart AI", "url": "https://www.mermaidchart.com", "description": "Mermaid 团队官方 SaaS + AI,从自然语言生成 mermaid 图表。", "category": "design", "tags": ["Diagram", "Mermaid"], "pricing": "freemium", "popularity": 55, "logo": "🧜" },
+
+  { "id": "elevenlabs-reader", "name": "ElevenLabs Reader", "url": "https://elevenlabs.io/app/reader", "description": "ElevenLabs 出品的高质量音频书 app,把任意 PDF / 文章听起来。", "category": "audio", "tags": ["Audiobook", "TTS"], "pricing": "freemium", "popularity": 65, "logo": "🎧" },
+  { "id": "speak", "name": "Speak", "url": "https://www.speak.com", "description": "OpenAI 投资的口语学习 AI,角色扮演纠音,英语 / 多语言。", "category": "education", "tags": ["Language", "Speaking"], "pricing": "paid", "popularity": 60, "logo": "🗣️" },
+
+  { "id": "rows-ai", "name": "Rows AI", "url": "https://rows.com", "description": "现代电子表格 + AI,可以问表格问题、自动跑公式 / 总结。", "category": "data", "tags": ["Spreadsheet", "AI"], "pricing": "freemium", "popularity": 50, "logo": "🟧" },
+  { "id": "snowflake-cortex", "name": "Snowflake Cortex", "url": "https://www.snowflake.com/data-cloud/cortex/", "description": "Snowflake 内置 LLM,在数据仓库上直接 SQL 调 AI,企业首选。", "category": "data", "tags": ["Warehouse", "Enterprise"], "pricing": "paid", "popularity": 60, "logo": "❄️" },
+
+  { "id": "wysa", "name": "Wysa", "url": "https://www.wysa.com", "description": "AI 心理健康对话助手,FDA 临床证据,企业 EAP 项目用得多。", "category": "business", "tags": ["Mental Health"], "pricing": "freemium", "popularity": 55, "logo": "🧘" },
+  { "id": "calm-ai", "name": "Calm", "url": "https://www.calm.com", "description": "冥想 / 睡眠 app,Calm AI 个性化生成内容。", "category": "business", "tags": ["Meditation", "Sleep"], "pricing": "paid", "popularity": 70, "logo": "🌊" },
+  { "id": "replika", "name": "Replika", "url": "https://replika.ai", "description": "AI 陪伴助手,百万级用户,情感支持产品的代表。", "category": "chat", "tags": ["Companion"], "pricing": "freemium", "popularity": 70, "logo": "💞" },
+
+  { "id": "snipd", "name": "Snipd", "url": "https://www.snipd.com", "description": "AI 播客 app,自动转写 + 剪辑高光片段 + 个性化推荐。", "category": "audio", "tags": ["Podcast", "Highlights"], "pricing": "freemium", "popularity": 55, "logo": "📻" },
+  { "id": "mubert", "name": "Mubert", "url": "https://mubert.com", "description": "AI 生成 royalty-free BGM,直接给视频 / 直播配乐。", "category": "audio", "tags": ["Music", "BGM"], "pricing": "freemium", "popularity": 55, "logo": "🎵" },
+
+  { "id": "marblism", "name": "Marblism", "url": "https://www.marblism.com", "description": "Prompt 到完整 SaaS 全栈应用,带 auth / DB / payments,$25/mo。", "category": "code", "tags": ["Full-stack", "Agent"], "pricing": "paid", "popularity": 50, "logo": "🟪" },
+  { "id": "create", "name": "Create", "url": "https://www.create.xyz", "description": "Prompt-to-website builder,生成可托管的 React 站点。", "category": "code", "tags": ["Website", "Builder"], "pricing": "freemium", "popularity": 55, "logo": "🛠" },
+
+  { "id": "hunyuan-video", "name": "腾讯混元 Video", "url": "https://hunyuan.tencent.com", "description": "腾讯混元开源视频生成,可本地部署的开源 video model 之一。", "category": "video", "tags": ["Video", "Tencent", "Open Source"], "pricing": "freemium", "popularity": 55, "logo": "💧" },
+
+  { "id": "deepl-write", "name": "DeepL Write", "url": "https://www.deepl.com/write", "description": "DeepL 的 AI 写作改写,英德法语支持,商务文档润色 jet。", "category": "writing", "tags": ["Rewrite", "Business"], "pricing": "freemium", "popularity": 65, "logo": "✍️" }
 ]
