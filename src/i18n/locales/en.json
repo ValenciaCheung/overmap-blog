@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Home",
+    "tools": "AI Tools",
+    "blog": "Blog",
+    "skillsHub": "Skills Hub",
+    "prompts": "Prompts",
+    "mainSite": "Main",
+    "search": "Search",
+    "menu": "Menu"
+  },
+  "footer": {
+    "tagline": "AI product design, prompt engineering, Agent Skills, tech tips — curated and redistributed by the Overmap team.",
+    "siteLinks": "Site",
+    "relatedLinks": "Links",
+    "mainSite": "Overmap (main)",
+    "docs": "Docs",
+    "github": "GitHub",
+    "rss": "RSS Feed",
+    "sitemap": "Sitemap",
+    "changelog": "Changelog",
+    "about": "About",
+    "copyright": "© {{year}} Overmap. Content for learning and research sharing.",
+    "builtWith": "Built with Next.js · shadcn/ui · MDX"
+  },
+  "hero": {
+    "badge": "Overmap subdomain · Content ecosystem",
+    "title1": "Where AI knowledge, tools",
+    "title2": "& prompts converge",
+    "subtitle": "We collect high-star open-source Agents, AI tools we actually use, debugged prompts, and video transcripts — and redistribute them with editorial taste.",
+    "ctaBlog": "Browse blog",
+    "ctaTools": "See AI tools",
+    "ctaHub": "Skills Hub",
+    "stats": {
+      "tools": "AI tools",
+      "skills": "Official Skills",
+      "repos": "GitHub picks",
+      "posts": "Blog posts",
+      "prompts": "Prompts"
+    }
+  },
+  "home": {
+    "trendingEyebrow": "Trending this month",
+    "trendingTitle": "AI tools heating up in the community",
+    "latestBlogEyebrow": "Latest blog",
+    "latestBlogTitle": "Video transcripts & AI workflow notes",
+    "featuredToolsEyebrow": "Featured tools",
+    "featuredToolsTitle": "AI Tools · Editors' picks",
+    "promptsEyebrow": "Prompt library",
+    "promptsTitle": "Drop-in prompts",
+    "hubEyebrow": "Skills Hub",
+    "hubTitle": "GitHub open source picks",
+    "viewAll": "View all",
+    "ctaTitle": "Got something to recommend?",
+    "ctaSubtitle": "Send us the AI tools / open repos / prompts you use daily. Editor-reviewed entries are credited.",
+    "ctaGithub": "Submit on GitHub",
+    "ctaMain": "Visit Overmap main site"
+  },
+  "common": {
+    "search": "Search",
+    "all": "All",
+    "viewAll": "View all",
+    "copy": "Copy",
+    "copied": "Copied",
+    "minutes": "min",
+    "loading": "Loading…",
+    "openLink": "Open",
+    "noResults": "No matches",
+    "openMainSite": "Visit Overmap main",
+    "subscribe": "Subscribe",
+    "share": "Share",
+    "back": "Back"
+  },
+  "search": {
+    "placeholder": "Search tools / Skills / prompts / blog...",
+    "loading": "Loading index…",
+    "empty": "No matches",
+    "groupPage": "Pages",
+    "groupTool": "Tools",
+    "groupSkill": "Skills",
+    "groupPrompt": "Prompts",
+    "groupBlog": "Blog",
+    "kbdEsc": "ESC",
+    "kbdEnter": "Open",
+    "kbdArrows": "Navigate",
+    "indexed": "{{count}} indexed"
+  },
+  "language": {
+    "switch": "Switch language",
+    "zh": "中文",
+    "en": "English"
+  }
+}

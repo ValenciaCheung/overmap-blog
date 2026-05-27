@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import { siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
+  const { t } = useTranslation();
   return (
     <footer className="border-t border-border/60 mt-24">
       <div className="container-page py-10 grid gap-8 md:grid-cols-4">
@@ -25,35 +29,35 @@ export function SiteFooter() {
             {siteConfig.name}
           </div>
           <p className="mt-2 text-sm text-muted-foreground max-w-md">
-            {siteConfig.description}
+            {t("footer.tagline")}
           </p>
         </div>
 
         <div>
-          <h4 className="text-sm font-medium mb-3">站内</h4>
+          <h4 className="text-sm font-medium mb-3">{t("footer.siteLinks")}</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="hover:text-foreground">
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               </li>
             ))}
             <li>
               <Link href="/changelog" className="hover:text-foreground">
-                Changelog
+                {t("footer.changelog")}
               </Link>
             </li>
             <li>
               <Link href="/about" className="hover:text-foreground">
-                About
+                {t("footer.about")}
               </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-sm font-medium mb-3">关联</h4>
+          <h4 className="text-sm font-medium mb-3">{t("footer.relatedLinks")}</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
               <a
@@ -62,7 +66,7 @@ export function SiteFooter() {
                 rel="noreferrer"
                 className="hover:text-foreground"
               >
-                Overmap 主站
+                {t("footer.mainSite")}
               </a>
             </li>
             <li>
@@ -72,7 +76,7 @@ export function SiteFooter() {
                 rel="noreferrer"
                 className="hover:text-foreground"
               >
-                文档站
+                {t("footer.docs")}
               </a>
             </li>
             <li>
@@ -82,17 +86,17 @@ export function SiteFooter() {
                 rel="noreferrer"
                 className="hover:text-foreground"
               >
-                GitHub
+                {t("footer.github")}
               </a>
             </li>
             <li>
               <a href="/feed.xml" className="hover:text-foreground">
-                RSS 订阅
+                {t("footer.rss")}
               </a>
             </li>
             <li>
               <a href="/sitemap.xml" className="hover:text-foreground">
-                Sitemap
+                {t("footer.sitemap")}
               </a>
             </li>
           </ul>
@@ -101,8 +105,10 @@ export function SiteFooter() {
 
       <div className="border-t border-border/60">
         <div className="container-page py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Overmap. 内容用于学习与研究分享。</div>
-          <div className="opacity-70">Built with Next.js · shadcn/ui · MDX</div>
+          <div>
+            {t("footer.copyright", { year: new Date().getFullYear() })}
+          </div>
+          <div className="opacity-70">{t("footer.builtWith")}</div>
         </div>
       </div>
     </footer>

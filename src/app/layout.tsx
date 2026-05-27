@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/site/theme-provider";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
 import { JsonLd, websiteSchema, orgSchema } from "@/components/site/json-ld";
+import { I18nProvider } from "@/components/site/i18n-provider";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -82,12 +83,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-svh flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-          <Toaster richColors position="top-center" />
+          <I18nProvider>
+            <div className="flex min-h-svh flex-col">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
+            <Toaster richColors position="top-center" />
+          </I18nProvider>
         </ThemeProvider>
         <JsonLd data={[websiteSchema, orgSchema]} />
       </body>

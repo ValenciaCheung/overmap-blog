@@ -5,10 +5,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, ExternalLink } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/site/theme-toggle";
+import { LanguageSwitcher } from "@/components/site/language-switcher";
 import { GlobalSearchButton } from "@/components/site/global-search";
 import {
   Sheet,
@@ -21,6 +23,7 @@ import {
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -60,7 +63,7 @@ export function SiteHeader() {
                   active && "text-foreground bg-accent"
                 )}
               >
-                {item.label}
+                {t(item.labelKey)}
               </Link>
             );
           })}
@@ -80,13 +83,14 @@ export function SiteHeader() {
               rel="noreferrer"
               className="gap-1 text-muted-foreground"
             >
-              主站 <ExternalLink className="size-3.5" />
+              {t("nav.mainSite")} <ExternalLink className="size-3.5" />
             </a>
           </Button>
+          <LanguageSwitcher />
           <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Menu">
+              <Button variant="ghost" size="icon" className="md:hidden" aria-label={t("nav.menu")}>
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
@@ -102,7 +106,7 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     className="rounded-md px-3 py-2 text-sm hover:bg-accent"
                   >
-                    {item.label}
+                    {t(item.labelKey)}
                   </Link>
                 ))}
                 <a
@@ -111,7 +115,7 @@ export function SiteHeader() {
                   rel="noreferrer"
                   className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent"
                 >
-                  Overmap 主站 ↗
+                  {t("footer.mainSite")} ↗
                 </a>
               </nav>
             </SheetContent>

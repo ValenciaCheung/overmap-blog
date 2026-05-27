@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "首页",
+    "tools": "AI 工具",
+    "blog": "博客",
+    "skillsHub": "Skills Hub",
+    "prompts": "提示词",
+    "mainSite": "主站",
+    "search": "搜索",
+    "menu": "菜单"
+  },
+  "footer": {
+    "tagline": "AI 产品设计、提示词工程、Agent Skills、Tech 圈技巧 — 由 Overmap 团队精选并再分发。",
+    "siteLinks": "站内",
+    "relatedLinks": "关联",
+    "mainSite": "Overmap 主站",
+    "docs": "文档站",
+    "github": "GitHub",
+    "rss": "RSS 订阅",
+    "sitemap": "Sitemap",
+    "changelog": "Changelog",
+    "about": "About",
+    "copyright": "© {{year}} Overmap. 内容用于学习与研究分享。",
+    "builtWith": "Built with Next.js · shadcn/ui · MDX"
+  },
+  "hero": {
+    "badge": "Overmap 二级域名 · 内容生态",
+    "title1": "AI 知识 · 工具 · 提示词的",
+    "title2": "集中分发地",
+    "subtitle": "我们把高 star 的开源 Agent、用得顺手的 AI 工具、调试过的提示词、视频内容文字稿汇总到一起 —— 用编辑视角再分发。",
+    "ctaBlog": "浏览博客",
+    "ctaTools": "看看 AI 工具库",
+    "ctaHub": "Skills Hub",
+    "stats": {
+      "tools": "AI 工具",
+      "skills": "官方 Skills",
+      "repos": "GitHub 精选",
+      "posts": "博客",
+      "prompts": "Prompts"
+    }
+  },
+  "home": {
+    "trendingEyebrow": "本月热门 · Trending",
+    "trendingTitle": "社区刚火起来的 AI 工具",
+    "latestBlogEyebrow": "最新博客",
+    "latestBlogTitle": "视频文字稿与 AI 实操笔记",
+    "featuredToolsEyebrow": "精选工具",
+    "featuredToolsTitle": "AI 工具库 · 编辑挑选",
+    "promptsEyebrow": "提示词库",
+    "promptsTitle": "拿来即用的 Prompts",
+    "hubEyebrow": "Skills Hub",
+    "hubTitle": "GitHub 开源精选",
+    "viewAll": "查看全部",
+    "ctaTitle": "有好东西推荐？",
+    "ctaSubtitle": "欢迎把你日常在用的 AI 工具 / 开源仓库 / 提示词投稿给我们。经过编辑筛选后会署名收录。",
+    "ctaGithub": "提交到 GitHub",
+    "ctaMain": "访问 Overmap 主站"
+  },
+  "common": {
+    "search": "搜索",
+    "all": "全部",
+    "viewAll": "查看全部",
+    "copy": "复制",
+    "copied": "已复制",
+    "minutes": "分钟",
+    "loading": "加载中…",
+    "openLink": "打开",
+    "noResults": "没找到匹配内容",
+    "openMainSite": "访问 Overmap 主站",
+    "subscribe": "订阅",
+    "share": "分享",
+    "back": "返回"
+  },
+  "search": {
+    "placeholder": "搜索工具 / Skill / 提示词 / 博客...",
+    "loading": "加载索引中…",
+    "empty": "没找到匹配的内容",
+    "groupPage": "页面",
+    "groupTool": "工具",
+    "groupSkill": "Skill",
+    "groupPrompt": "提示词",
+    "groupBlog": "博客",
+    "kbdEsc": "ESC",
+    "kbdEnter": "打开",
+    "kbdArrows": "导航",
+    "indexed": "{{count}} 条索引"
+  },
+  "language": {
+    "switch": "切换语言",
+    "zh": "中文",
+    "en": "English"
+  }
+}
