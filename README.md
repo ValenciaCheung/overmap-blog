@@ -3,7 +3,20 @@
 > AI 知识 · 工具 · 提示词的集中分发地。
 > Overmap 主站的二级域名内容生态。
 
-[overmap.org](https://overmap.org) · [blog.overmap.org](https://blog.overmap.org) (即将上线)
+**Live:** [blog.overmap.org](https://blog.overmap.org) · **Main:** [overmap.org](https://overmap.org) · **Repo:** [github.com/ValenciaCheung/overmap-blog](https://github.com/ValenciaCheung/overmap-blog)
+
+---
+
+## Stats(自动更新)
+
+| 项 | 数量 |
+|---|---|
+| 🛠 AI 工具 | **220** 个 · 15 个分类 |
+| ✨ Anthropic Skills | **17** 个(从 anthropics/skills 自动同步) |
+| 🐙 GitHub 精选 | **9** 个开源项目 |
+| 📝 博客文章 | **11** 篇 |
+| 💬 Prompts 模板 | **23** 个 |
+| 📋 总静态页 | **80+** |
 
 ---
 
@@ -11,13 +24,21 @@
 
 | 路由 | 说明 |
 |------|------|
-| `/` | 首页 Feed：最新博客 + 精选工具 + 精选 GitHub 项目 |
-| `/tools` | AI 工具库（分类 + 搜索） |
-| `/blog` | 博客（视频文字稿 / Prompt 技巧 / Tech 实操） |
-| `/blog/[slug]` | 博客详情（MDX） |
-| `/hub` | Skills Hub — GitHub 开源项目精选 |
-| `/prompts` | 提示词库（一键复制 + 详细解析） |
-| `/prompts/[slug]` | 提示词详情 |
+| `/` | 首页 Feed:Hero stats + Trending + 博客 + 工具 + Prompts + Skills Hub |
+| `/tools` | AI 工具库,15 个分类卡片 + 全量探索 |
+| `/tools/[category]` | 15 个分类 SEO 落地页(chat/image/video/...) |
+| `/blog` | 博客列表(搜索 + tag 筛选 + RSS) |
+| `/blog/[slug]` | 博客详情(MDX + Shiki 高亮) |
+| `/hub` | Skills Hub — GitHub 开源精选 + Anthropic Skills 入口 |
+| `/hub/skills` | Anthropic Skills 索引(17 个) |
+| `/hub/skills/[slug]` | Skill 详情 + 一键安装命令(degit / curl / sparse-checkout) |
+| `/prompts` | 提示词库(搜索 + 分类筛选) |
+| `/prompts/[slug]` | 提示词详情(一键复制) |
+| `/changelog` | git log 自动生成的更新时间线 |
+| `/about` | 关于本站 |
+| `/feed.xml` | RSS 2.0 订阅 |
+| `/sitemap.xml` | 完整 sitemap(80+ URLs) |
+| `/search-index.json` | cmd+K 全站搜索索引(288 条) |
 
 ## 技术栈
 

@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles, Newspaper, Wrench, Code2, Brain, Flame } from "lucide-react";
+import { ArrowRight, Sparkles, Newspaper, Wrench, Code2, Brain, Flame, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BlogCard } from "@/components/site/blog-card";
 import { ToolCard } from "@/components/site/tool-card";
 import { RepoCard } from "@/components/site/repo-card";
+import { PromptCard } from "@/components/site/prompt-card";
 import { getAllPosts } from "@/lib/blog";
 import { getAllTools, getFeaturedTools, getTrendingTools } from "@/lib/tools";
 import { getAllRepos, getFeaturedRepos } from "@/lib/hub";
@@ -16,6 +17,7 @@ export default function HomePage() {
   const featuredTools = getFeaturedTools(6);
   const trendingTools = getTrendingTools(6);
   const featuredRepos = getFeaturedRepos(3);
+  const featuredPrompts = getAllPrompts().slice(0, 4);
   const stats = {
     tools: getAllTools().length,
     skills: getAllSkills().length,
@@ -64,6 +66,19 @@ export default function HomePage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {featuredTools.map((t) => (
             <ToolCard key={t.id} tool={t} />
+          ))}
+        </div>
+      </FeedSection>
+
+      <FeedSection
+        eyebrow="提示词库"
+        title="拿来即用的 Prompts"
+        href="/prompts"
+        icon={<MessageSquare className="size-4" />}
+      >
+        <div className="grid gap-4 md:grid-cols-2">
+          {featuredPrompts.map((p) => (
+            <PromptCard key={p.slug} prompt={p} />
           ))}
         </div>
       </FeedSection>
