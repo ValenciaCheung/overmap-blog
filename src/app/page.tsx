@@ -6,17 +6,26 @@ import { BlogCard } from "@/components/site/blog-card";
 import { ToolCard } from "@/components/site/tool-card";
 import { RepoCard } from "@/components/site/repo-card";
 import { getAllPosts } from "@/lib/blog";
-import { getFeaturedTools } from "@/lib/tools";
-import { getFeaturedRepos } from "@/lib/hub";
+import { getAllTools, getFeaturedTools } from "@/lib/tools";
+import { getAllRepos, getFeaturedRepos } from "@/lib/hub";
+import { getAllSkills } from "@/lib/skills";
+import { getAllPrompts } from "@/lib/prompts";
 
 export default function HomePage() {
   const latestPosts = getAllPosts().slice(0, 3);
   const featuredTools = getFeaturedTools(6);
   const featuredRepos = getFeaturedRepos(3);
+  const stats = {
+    tools: getAllTools().length,
+    skills: getAllSkills().length,
+    repos: getAllRepos().length,
+    posts: getAllPosts().length,
+    prompts: getAllPrompts().length,
+  };
 
   return (
     <div className="pb-12">
-      <Hero />
+      <Hero stats={stats} />
       <SectionDivider />
       <FeedSection
         eyebrow="最新博客"
@@ -62,7 +71,22 @@ export default function HomePage() {
   );
 }
 
-function Hero() {
+interface HeroStats {
+  tools: number;
+  skills: number;
+  repos: number;
+  posts: number;
+  prompts: number;
+}
+
+function Hero({ stats }: { stats: HeroStats }) {
+  const items = [
+    { label: "AI 工具", value: stats.tools, href: "/tools" },
+    { label: "官方 Skills", value: stats.skills, href: "/hub/skills" },
+    { label: "GitHub 精选", value: stats.repos, href: "/hub" },
+    { label: "博客", value: stats.posts, href: "/blog" },
+    { label: "Prompts", value: stats.prompts, href: "/prompts" },
+  ];
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 fade-bottom-lg">
@@ -96,6 +120,24 @@ function Hero() {
               </Link>
             </Button>
           </div>
+        </div>
+
+        {/* Stat bar */}
+        <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-5 max-w-3xl animate-appear animation-delay-1000">
+          {items.map((it) => (
+            <Link
+              key={it.label}
+              href={it.href}
+              className="group glass-2 rounded-xl px-4 py-3 transition-colors hover:border-primary/40"
+            >
+              <div className="font-mono text-2xl font-semibold tracking-tight tabular-nums group-hover:text-primary">
+                {it.value}
+              </div>
+              <div className="text-xs text-muted-foreground mt-0.5">
+                {it.label}
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

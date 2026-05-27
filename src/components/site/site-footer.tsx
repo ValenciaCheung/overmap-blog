@@ -75,6 +75,16 @@ export function SiteFooter() {
                 GitHub
               </a>
             </li>
+            <li>
+              <a href="/feed.xml" className="hover:text-foreground">
+                RSS 订阅
+              </a>
+            </li>
+            <li>
+              <a href="/sitemap.xml" className="hover:text-foreground">
+                Sitemap
+              </a>
+            </li>
           </ul>
         </div>
       </div>

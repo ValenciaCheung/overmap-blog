@@ -138,5 +138,88 @@
   { "id": "intercom-fin", "name": "Intercom Fin", "url": "https://www.intercom.com/fin", "description": "Intercom 的 AI 客服 Agent,解决率 50%+,大型 SaaS 客服首选。", "category": "business", "tags": ["Customer Support"], "pricing": "paid", "popularity": 70, "logo": "💬" },
   { "id": "ada", "name": "Ada", "url": "https://www.ada.cx", "description": "企业级 AI 客服 Agent 平台,大型 B2C 公司在用。", "category": "business", "tags": ["Customer Support", "Enterprise"], "pricing": "paid", "popularity": 50, "logo": "🅰️" },
   { "id": "common-room", "name": "Common Room", "url": "https://www.commonroom.io", "description": "社区驱动的 GTM 工具,AI 自动识别潜在客户信号(GitHub/Slack/X 等)。", "category": "marketing", "tags": ["Community", "GTM"], "pricing": "paid", "popularity": 55, "logo": "🏠" },
-  { "id": "apollo", "name": "Apollo", "url": "https://www.apollo.io", "description": "B2B 销售情报平台 + AI 邮件序列,中小公司线索池主要来源。", "category": "marketing", "tags": ["Sales", "B2B"], "pricing": "freemium", "popularity": 70, "logo": "🌕" }
+  { "id": "apollo", "name": "Apollo", "url": "https://www.apollo.io", "description": "B2B 销售情报平台 + AI 邮件序列,中小公司线索池主要来源。", "category": "marketing", "tags": ["Sales", "B2B"], "pricing": "freemium", "popularity": 70, "logo": "🌕" },
+
+  { "id": "huggingchat", "name": "HuggingChat", "url": "https://huggingface.co/chat", "description": "HuggingFace 出品的开源模型聊天端,可切 Llama / Mistral / Qwen 等开源旗舰。", "category": "chat", "tags": ["LLM", "Open Source"], "pricing": "free", "popularity": 60, "logo": "🤗" },
+  { "id": "cohere-coral", "name": "Cohere Coral", "url": "https://coral.cohere.com", "description": "Cohere 的企业级聊天 + RAG,企业知识库问答方向口碑好。", "category": "chat", "tags": ["LLM", "Enterprise"], "pricing": "freemium", "popularity": 45, "logo": "🪸" },
+  { "id": "kimi", "name": "Kimi", "url": "https://kimi.com", "description": "月之暗面出品,长上下文(200w+)中文模型,文档阅读神器。", "category": "chat", "tags": ["LLM", "China", "Long-context"], "pricing": "freemium", "popularity": 75, "logo": "🌙" },
+  { "id": "doubao", "name": "豆包", "url": "https://www.doubao.com", "description": "字节跳动出品,免费、多模态,Cici / Doubao 海内外双品牌。", "category": "chat", "tags": ["LLM", "ByteDance", "China"], "pricing": "free", "popularity": 72, "logo": "🫘" },
+  { "id": "wenxin", "name": "文心一言", "url": "https://yiyan.baidu.com", "description": "百度 Ernie 系列对话端,文心 4.0 中文能力强,办公场景集成。", "category": "chat", "tags": ["LLM", "Baidu", "China"], "pricing": "freemium", "popularity": 60, "logo": "🟡" },
+  { "id": "chatglm", "name": "智谱清言", "url": "https://chatglm.cn", "description": "智谱 AI 出品,GLM-4 系列,代码 / 数学评测国内一线。", "category": "chat", "tags": ["LLM", "ZhipuAI", "China"], "pricing": "freemium", "popularity": 55, "logo": "🟢" },
+  { "id": "deepseek-coder", "name": "DeepSeek Coder", "url": "https://chat.deepseek.com", "description": "DeepSeek 专门的编程模型端,代码能力对标 GPT-4,价格极低。", "category": "code", "tags": ["LLM", "Coding", "China"], "pricing": "freemium", "popularity": 78, "logo": "🐳" },
+  { "id": "hailuo-chat", "name": "海螺 AI", "url": "https://hailuoai.com", "description": "MiniMax 综合对话端,带视频/音频生成,国内多模态全栈。", "category": "chat", "tags": ["LLM", "MiniMax", "China"], "pricing": "free", "popularity": 65, "logo": "🐚" },
+
+  { "id": "imagefx", "name": "ImageFX", "url": "https://labs.google/fx/tools/image-fx", "description": "Google Labs 出品的 Imagen 3 web 端,免费可用,无广告无 watermark。", "category": "image", "tags": ["Image", "Google", "Free"], "pricing": "free", "popularity": 65, "logo": "🟢" },
+  { "id": "civitai", "name": "Civitai", "url": "https://civitai.com", "description": "开源图像模型社区,几万个 LoRA / Checkpoint 自由下载,创作者共享。", "category": "image", "tags": ["Image", "Community", "Open Source"], "pricing": "freemium", "popularity": 80, "logo": "🟣" },
+  { "id": "comfyui", "name": "ComfyUI", "url": "https://www.comfy.org", "description": "开源节点式图像生成 UI,可视化 SD / Flux 工作流,高级玩家首选。", "category": "image", "tags": ["Image", "Workflow", "Open Source"], "pricing": "free", "popularity": 78, "logo": "🟦" },
+  { "id": "hunyuan-image", "name": "腾讯混元 Image", "url": "https://hunyuan.tencent.com", "description": "腾讯混元图像生成,中文 prompt 理解优秀,免费 API。", "category": "image", "tags": ["Image", "Tencent", "China"], "pricing": "freemium", "popularity": 55, "logo": "💧" },
+  { "id": "bing-image", "name": "Bing Image Creator", "url": "https://www.bing.com/images/create", "description": "Microsoft Bing 免费的 DALL-E 3 入口,每日额度高。", "category": "image", "tags": ["Image", "Free", "DALL-E"], "pricing": "free", "popularity": 60, "logo": "🟦" },
+
+  { "id": "pixlr-ai", "name": "Pixlr AI", "url": "https://pixlr.com/ai", "description": "免费浏览器 PS 替代,带 AI 抠图 / 放大 / 生成填充。", "category": "image", "tags": ["Edit", "Browser"], "pricing": "freemium", "popularity": 60, "logo": "🅿️" },
+  { "id": "topaz", "name": "Topaz Photo AI", "url": "https://www.topazlabs.com/topaz-photo-ai", "description": "专业摄影师必备,放大 / 降噪 / 锐化,本地运行,效果业界标杆。", "category": "image", "tags": ["Upscale", "Photo"], "pricing": "paid", "popularity": 70, "logo": "💎" },
+  { "id": "adobe-express", "name": "Adobe Express", "url": "https://www.adobe.com/express", "description": "Adobe 的轻量设计 + AI,模板丰富,适合社交媒体内容。", "category": "design", "tags": ["Adobe", "Templates"], "pricing": "freemium", "popularity": 65, "logo": "🔺" },
+
+  { "id": "hedra", "name": "Hedra", "url": "https://www.hedra.com", "description": "Character-1 模型,从图片 + 音频生成会说话的数字人,口型对齐准。", "category": "video", "tags": ["Avatar", "Lip-sync"], "pricing": "freemium", "badge": "trending", "popularity": 72, "logo": "🐉" },
+  { "id": "tavus", "name": "Tavus", "url": "https://www.tavus.io", "description": "个性化视频 API,把模板视频变成对每个收件人独特的版本(销售 / 营销)。", "category": "video", "tags": ["API", "Personalization"], "pricing": "paid", "popularity": 55, "logo": "🎯" },
+  { "id": "pictory", "name": "Pictory", "url": "https://pictory.ai", "description": "长文章 / 博客自动转视频,适合内容营销批量出片。", "category": "video", "tags": ["Article-to-video"], "pricing": "freemium", "popularity": 50, "logo": "📖" },
+  { "id": "invideo", "name": "InVideo AI", "url": "https://invideo.io/ai", "description": "对话式视频生成,告诉它你要的视频,它自动剪好。", "category": "video", "tags": ["AI Edit"], "pricing": "freemium", "popularity": 60, "logo": "🎬" },
+  { "id": "vidnoz", "name": "Vidnoz", "url": "https://www.vidnoz.com", "description": "免费数字人视频工具,适合电商和短视频起步。", "category": "video", "tags": ["Avatar", "Free"], "pricing": "freemium", "popularity": 45, "logo": "📹" },
+
+  { "id": "lalal", "name": "Lalal.ai", "url": "https://www.lalal.ai", "description": "AI 音轨分离,从一首歌里抽出人声 / 鼓 / 贝斯 / 其他,音乐制作必备。", "category": "audio", "tags": ["Stem", "Music"], "pricing": "freemium", "popularity": 65, "logo": "🎚️" },
+  { "id": "landr", "name": "LANDR", "url": "https://www.landr.com", "description": "AI 母带处理,几分钟把粗剪音乐做成成品质量。", "category": "audio", "tags": ["Mastering"], "pricing": "freemium", "popularity": 55, "logo": "🎛️" },
+  { "id": "endel", "name": "Endel", "url": "https://endel.io", "description": "AI 生成专注 / 放松 / 睡眠 BGM,Apple 推荐。", "category": "audio", "tags": ["Ambient", "Focus"], "pricing": "paid", "popularity": 60, "logo": "🌌" },
+  { "id": "soundraw", "name": "Soundraw", "url": "https://soundraw.io", "description": "为视频创作者做的免版权 AI 音乐,自定义长度 / 风格 / 情绪。", "category": "audio", "tags": ["Music", "Royalty-free"], "pricing": "paid", "popularity": 50, "logo": "🎶" },
+
+  { "id": "aider", "name": "Aider", "url": "https://aider.chat", "description": "开源 CLI 编程 Agent,跟 git 紧密集成,自动 commit 修改。", "category": "code", "tags": ["CLI", "Open Source", "Agent"], "pricing": "free", "popularity": 75, "logo": "🐍" },
+  { "id": "sweep", "name": "Sweep AI", "url": "https://sweep.dev", "description": "GitHub Issue 直接转 PR 的 Agent,适合修小 bug 和 chore 任务。", "category": "code", "tags": ["GitHub", "Issues"], "pricing": "freemium", "popularity": 55, "logo": "🧹" },
+  { "id": "codium", "name": "Codium AI", "url": "https://www.codium.ai", "description": "为代码自动生成测试用例的 AI(注意:跟 Codeium 不是同一家)。", "category": "code", "tags": ["Testing"], "pricing": "freemium", "popularity": 55, "logo": "🧪" },
+  { "id": "refact", "name": "Refact.ai", "url": "https://refact.ai", "description": "开源 AI 编程助手,可本地部署,企业私有最稳。", "category": "code", "tags": ["IDE", "Open Source", "Self-host"], "pricing": "freemium", "popularity": 50, "logo": "♻️" },
+  { "id": "trae", "name": "Trae", "url": "https://www.trae.ai", "description": "字节出品的 AI IDE,Cursor 国产替代品,中英文支持完整。", "category": "code", "tags": ["IDE", "ByteDance"], "pricing": "free", "popularity": 60, "logo": "🟦" },
+
+  { "id": "lindy", "name": "Lindy", "url": "https://www.lindy.ai", "description": "No-code Agent 平台,几个组件搭出个人 AI 员工,营销 / 客服都能跑。", "category": "agent", "tags": ["No-code", "Automation"], "pricing": "freemium", "popularity": 60, "logo": "🟢" },
+  { "id": "multion", "name": "MultiOn", "url": "https://www.multion.ai", "description": "浏览器 Agent,让 AI 直接控制你的 Chrome 完成任务(订机票 / 下单)。", "category": "agent", "tags": ["Browser", "Agent"], "pricing": "freemium", "popularity": 55, "logo": "🌐" },
+  { "id": "pydantic-ai", "name": "Pydantic AI", "url": "https://ai.pydantic.dev", "description": "Pydantic 出品的 Python Agent 框架,主打类型安全和测试性。", "category": "agent", "tags": ["Python", "Framework"], "pricing": "free", "popularity": 65, "logo": "🐍" },
+  { "id": "smolagents", "name": "smolagents", "url": "https://github.com/huggingface/smolagents", "description": "HuggingFace 出品,极简 Agent 框架,代码即工具调用。", "category": "agent", "tags": ["Framework", "Open Source"], "pricing": "free", "popularity": 60, "logo": "🐹" },
+
+  { "id": "excalidraw-ai", "name": "Excalidraw AI", "url": "https://excalidraw.com/plus", "description": "手绘风格白板 + AI 自动生成图表,工程师画架构图首选。", "category": "design", "tags": ["Diagram", "Whiteboard"], "pricing": "freemium", "popularity": 75, "logo": "✏️" },
+  { "id": "eraser", "name": "Eraser.io", "url": "https://www.eraser.io", "description": "AI 架构图生成,从文字描述出 Mermaid / Cloud diagram。", "category": "design", "tags": ["Diagram", "Architecture"], "pricing": "freemium", "popularity": 65, "logo": "🧽" },
+  { "id": "lummi", "name": "Lummi", "url": "https://www.lummi.ai", "description": "AI 生成的免费可商用 stock 图库,替代 Unsplash 部分场景。", "category": "design", "tags": ["Stock", "Image"], "pricing": "freemium", "popularity": 55, "logo": "🟨" },
+  { "id": "vectorizer", "name": "Vectorizer.ai", "url": "https://vectorizer.ai", "description": "AI 把位图(PNG / JPG)转成可缩放的矢量 SVG,设计师必备。", "category": "design", "tags": ["Vector"], "pricing": "paid", "popularity": 50, "logo": "🔼" },
+
+  { "id": "move-ai", "name": "Move AI", "url": "https://www.move.ai", "description": "手机视频转 3D 动作捕捉,游戏 / 动画行业减少 mocap 设备需求。", "category": "3d", "tags": ["Motion Capture"], "pricing": "freemium", "popularity": 55, "logo": "🏃" },
+  { "id": "promethean", "name": "Promethean AI", "url": "https://prometheanai.com", "description": "AI 助手帮 3D 场景搭建,给游戏 / 电影概念设计师省时间。", "category": "3d", "tags": ["Game", "Scene"], "pricing": "paid", "popularity": 40, "logo": "🔥" },
+
+  { "id": "hyperwrite", "name": "HyperWrite", "url": "https://www.hyperwriteai.com", "description": "AI 写作 + 浏览器自动化,Chrome 扩展形态,接近 personal AI agent。", "category": "writing", "tags": ["Writing", "Browser"], "pricing": "freemium", "popularity": 50, "logo": "🖊️" },
+  { "id": "type-ai", "name": "Type", "url": "https://type.ai", "description": "为长文撰写做的 AI 编辑器,自带研究模式和大纲生成。", "category": "writing", "tags": ["Long-form", "Editor"], "pricing": "freemium", "popularity": 45, "logo": "🔤" },
+  { "id": "lex-page", "name": "Lex", "url": "https://lex.page", "description": "Every 团队出品的 AI 写作工具,极简 UX,小说和长稿写作。", "category": "writing", "tags": ["Writing", "Minimal"], "pricing": "freemium", "popularity": 50, "logo": "📜" },
+
+  { "id": "read-ai", "name": "Read.ai", "url": "https://www.read.ai", "description": "AI 会议分析,不止做转写,还分析参会人情绪 / 互动密度。", "category": "productivity", "tags": ["Meeting", "Analytics"], "pricing": "freemium", "popularity": 55, "logo": "📖" },
+  { "id": "tactiq", "name": "Tactiq", "url": "https://tactiq.io", "description": "Chrome 扩展,自动转写 Google Meet / Zoom,3 秒可分享。", "category": "productivity", "tags": ["Meeting", "Extension"], "pricing": "freemium", "popularity": 60, "logo": "🟢" },
+  { "id": "sunsama", "name": "Sunsama", "url": "https://sunsama.com", "description": "每日规划 + 待办整合工具,带 AI 智能排程。", "category": "productivity", "tags": ["Daily", "Planning"], "pricing": "paid", "popularity": 55, "logo": "🌅" },
+  { "id": "sembly", "name": "Sembly", "url": "https://www.sembly.ai", "description": "AI 团队助手,自动加入会议 / 总结 / 出 action items。", "category": "productivity", "tags": ["Meeting", "Team"], "pricing": "freemium", "popularity": 45, "logo": "🧑‍💼" },
+
+  { "id": "answerthepublic", "name": "AnswerThePublic", "url": "https://answerthepublic.com", "description": "可视化关键词搜索意图工具,SEO 选题神器,now AI 增强。", "category": "marketing", "tags": ["SEO", "Research"], "pricing": "freemium", "popularity": 60, "logo": "❓" },
+  { "id": "frase", "name": "Frase", "url": "https://www.frase.io", "description": "SEO 内容研究 + 写作 + 优化,中小博主常用。", "category": "marketing", "tags": ["SEO", "Content"], "pricing": "paid", "popularity": 55, "logo": "📝" },
+  { "id": "lavender", "name": "Lavender", "url": "https://www.lavender.ai", "description": "销售邮件 AI 教练,实时给你写邮件的反馈和优化建议。", "category": "marketing", "tags": ["Sales", "Email"], "pricing": "freemium", "popularity": 50, "logo": "🪻" },
+  { "id": "outreach", "name": "Outreach", "url": "https://www.outreach.io", "description": "企业级销售协同平台,AI Smart Account Plan / Email 自动写。", "category": "marketing", "tags": ["Sales", "Enterprise"], "pricing": "paid", "popularity": 60, "logo": "📞" },
+  { "id": "zoominfo", "name": "ZoomInfo", "url": "https://www.zoominfo.com", "description": "B2B 数据库 + AI Intent 信号,大型企业销售首选。", "category": "marketing", "tags": ["Sales", "Data"], "pricing": "paid", "popularity": 65, "logo": "🔍" },
+  { "id": "lemlist", "name": "Lemlist", "url": "https://lemlist.com", "description": "个性化冷邮件序列 + AI 写作,中小公司用得多。", "category": "marketing", "tags": ["Sales", "Email"], "pricing": "paid", "popularity": 55, "logo": "🍋" },
+
+  { "id": "drift", "name": "Drift", "url": "https://www.drift.com", "description": "对话式营销 + 客服平台,Salesloft 旗下,AI Chatbot 强。", "category": "business", "tags": ["Chatbot", "Marketing"], "pricing": "paid", "popularity": 60, "logo": "💧" },
+  { "id": "zendesk-ai", "name": "Zendesk AI", "url": "https://www.zendesk.com/service/ai", "description": "Zendesk 内置 AI Agent + Copilot,大型客服团队主流方案。", "category": "business", "tags": ["Customer Support"], "pricing": "paid", "popularity": 65, "logo": "🟢" },
+  { "id": "sierra", "name": "Sierra", "url": "https://sierra.ai", "description": "Bret Taylor 创立,企业 AI Agent 客服平台,大公司新宠。", "category": "business", "tags": ["Customer Support", "Agent"], "pricing": "paid", "popularity": 55, "logo": "🏔️" },
+  { "id": "forethought", "name": "Forethought", "url": "https://forethought.ai", "description": "AI 客服自动分诊 + 知识库辅助,Zendesk / Salesforce 集成。", "category": "business", "tags": ["Customer Support"], "pricing": "paid", "popularity": 45, "logo": "💭" },
+
+  { "id": "harvey", "name": "Harvey AI", "url": "https://www.harvey.ai", "description": "面向律所的企业 AI,合同审查 / 法律研究 / 起草,顶级律所 deploy。", "category": "business", "tags": ["Legal", "Enterprise"], "pricing": "paid", "popularity": 70, "logo": "⚖️" },
+  { "id": "spellbook", "name": "Spellbook", "url": "https://www.spellbook.legal", "description": "中小律所 + 公司法务用的合同 AI,在 Word 里直接审条款。", "category": "business", "tags": ["Legal", "Contracts"], "pricing": "paid", "popularity": 50, "logo": "📚" },
+
+  { "id": "magic-school", "name": "MagicSchool AI", "url": "https://www.magicschool.ai", "description": "为 K-12 老师做的 AI 工具集合,出题 / 评分 / 备课。", "category": "education", "tags": ["Teachers", "K-12"], "pricing": "freemium", "popularity": 60, "logo": "🏫" },
+  { "id": "mathway", "name": "Mathway", "url": "https://www.mathway.com", "description": "拍照解数学题,带分步推理过程,初高中生学习神器。", "category": "education", "tags": ["Math"], "pricing": "freemium", "popularity": 65, "logo": "➗" },
+  { "id": "studyfetch", "name": "StudyFetch", "url": "https://www.studyfetch.com", "description": "上传任意 PDF 课件,生成 flashcard / 测验 / AI 辅导对话。", "category": "education", "tags": ["Study", "PDF"], "pricing": "freemium", "popularity": 50, "logo": "🎒" },
+
+  { "id": "akkio", "name": "Akkio", "url": "https://www.akkio.com", "description": "拖拉拽机器学习,商业用户跑预测模型不用写代码。", "category": "data", "tags": ["ML", "No-code"], "pricing": "freemium", "popularity": 45, "logo": "🟧" },
+  { "id": "outerbase", "name": "Outerbase", "url": "https://www.outerbase.com", "description": "现代数据库 UI + AI Copilot,问问题就出 SQL + 图表。", "category": "data", "tags": ["Database", "SQL"], "pricing": "freemium", "popularity": 55, "logo": "🟦" },
+
+  { "id": "paradox", "name": "Paradox", "url": "https://www.paradox.ai", "description": "招聘 AI 助手 Olivia,自动筛简历 / 安排面试,大企业用。", "category": "business", "tags": ["HR", "Recruiting"], "pricing": "paid", "popularity": 50, "logo": "🟧" },
+  { "id": "hirevue", "name": "HireVue", "url": "https://www.hirevue.com", "description": "AI 视频面试评估,世界 500 强大批量招聘的标配。", "category": "business", "tags": ["HR", "Interview"], "pricing": "paid", "popularity": 45, "logo": "🎥" }
 ]

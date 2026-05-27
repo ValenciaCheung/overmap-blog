@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Overmap Blog</title>
+    <link>https://blog.overmap.org</link>
+    <description>AI 产品设计、提示词工程、Agent Skills、Tech 圈技巧 — 由 Overmap 团队精选并再分发。</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 26 May 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://blog.overmap.org/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello, Overmap Blog — 这个站点要做什么</title>
+      <link>https://blog.overmap.org/blog/hello-overmap-blog</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/hello-overmap-blog</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>我们做了一个站点，把 AI 工具、提示词、Agent Skills、视频文字稿放在一起再分发。这是开站第一篇。</description>
+      <content:encoded><![CDATA[<p>我们做了一个站点，把 AI 工具、提示词、Agent Skills、视频文字稿放在一起再分发。这是开站第一篇。</p><p><a href="https://blog.overmap.org/blog/hello-overmap-blog">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>用 Next.js + shadcn/ui + MDX 搭一个 AI 知识站</title>
+      <link>https://blog.overmap.org/blog/build-with-nextjs-shadcn-mdx</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/build-with-nextjs-shadcn-mdx</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>把这个 Blog 站点本身拆开看 —— 路由怎么分、设计系统怎么对齐、MDX 内容怎么管，给同样想搭一个的人当样板。</description>
+      <content:encoded><![CDATA[<p>把这个 Blog 站点本身拆开看 —— 路由怎么分、设计系统怎么对齐、MDX 内容怎么管，给同样想搭一个的人当样板。</p><p><a href="https://blog.overmap.org/blog/build-with-nextjs-shadcn-mdx">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>2026 年我每天都在用的 AI 工具栈（截至 5 月）</title>
+      <link>https://blog.overmap.org/blog/2026-ai-tool-stack</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/2026-ai-tool-stack</guid>
+      <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>12 个真正进入日常工作流的 AI 工具,按场景分类,带替代品和坑点。不是凑数榜单。</description>
+      <content:encoded><![CDATA[<p>12 个真正进入日常工作流的 AI 工具,按场景分类,带替代品和坑点。不是凑数榜单。</p><p><a href="https://blog.overmap.org/blog/2026-ai-tool-stack">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Claude vs ChatGPT vs Gemini — 2026 年怎么选</title>
+      <link>https://blog.overmap.org/blog/claude-vs-chatgpt-vs-gemini</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/claude-vs-chatgpt-vs-gemini</guid>
+      <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>三个旗舰对话 AI 实测对比,按 5 个真实场景(写代码 / 长文档 / 数据分析 / 创意 / 多模态)给推荐。</description>
+      <content:encoded><![CDATA[<p>三个旗舰对话 AI 实测对比,按 5 个真实场景(写代码 / 长文档 / 数据分析 / 创意 / 多模态)给推荐。</p><p><a href="https://blog.overmap.org/blog/claude-vs-chatgpt-vs-gemini">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Claude Code 工作流：把日常任务做成可复用的 Skill</title>
+      <link>https://blog.overmap.org/blog/claude-code-skill-workflow</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/claude-code-skill-workflow</guid>
+      <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>Skill 是 Claude Code 的可复用工作流单元。本文用三个真实例子告诉你什么时候该写 Skill，什么时候不该。</description>
+      <content:encoded><![CDATA[<p>Skill 是 Claude Code 的可复用工作流单元。本文用三个真实例子告诉你什么时候该写 Skill，什么时候不该。</p><p><a href="https://blog.overmap.org/blog/claude-code-skill-workflow">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Cursor + Claude Code 工作流:两个 AI IDE 怎么互补不打架</title>
+      <link>https://blog.overmap.org/blog/cursor-claude-code-workflow</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/cursor-claude-code-workflow</guid>
+      <pubDate>Fri, 22 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>Cursor 用来贴身改文件,Claude Code 用来跑长任务。两套配合下来,我现在 60% 的工程时间是看 AI 干活。</description>
+      <content:encoded><![CDATA[<p>Cursor 用来贴身改文件,Claude Code 用来跑长任务。两套配合下来,我现在 60% 的工程时间是看 AI 干活。</p><p><a href="https://blog.overmap.org/blog/cursor-claude-code-workflow">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Midjourney vs Flux vs Ideogram — 三种图谁更准</title>
+      <link>https://blog.overmap.org/blog/midjourney-vs-flux-vs-ideogram</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/midjourney-vs-flux-vs-ideogram</guid>
+      <pubDate>Wed, 20 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>三大主流 AI 图像生成横向对比,各自吃掉的场景:艺术风 / 工程文字 / 商业海报。</description>
+      <content:encoded><![CDATA[<p>三大主流 AI 图像生成横向对比,各自吃掉的场景:艺术风 / 工程文字 / 商业海报。</p><p><a href="https://blog.overmap.org/blog/midjourney-vs-flux-vs-ideogram">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>2026 年 AI 视频生成实测:Sora / Veo / Kling 谁更能打</title>
+      <link>https://blog.overmap.org/blog/ai-video-2026</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/ai-video-2026</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>三大 AI 视频模型实测对比,5 类典型镜头(运动 / 人物 / 写实 / 创意 / 长片段)各自打分。</description>
+      <content:encoded><![CDATA[<p>三大 AI 视频模型实测对比,5 类典型镜头(运动 / 人物 / 写实 / 创意 / 长片段)各自打分。</p><p><a href="https://blog.overmap.org/blog/ai-video-2026">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

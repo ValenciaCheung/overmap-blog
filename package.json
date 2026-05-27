@@ -10,8 +10,9 @@
     "lint": "eslint",
     "sync:github": "tsx scripts/sync-github.ts",
     "sync:skills": "tsx scripts/sync-skills.ts",
-    "sync:all": "pnpm run sync:github && pnpm run sync:skills",
-    "prebuild": "tsx scripts/sync-github.ts || true; tsx scripts/sync-skills.ts || true",
+    "sync:feed": "tsx scripts/generate-feed.ts",
+    "sync:all": "pnpm run sync:github && pnpm run sync:skills && pnpm run sync:feed",
+    "prebuild": "tsx scripts/sync-github.ts || true; tsx scripts/sync-skills.ts || true; tsx scripts/generate-feed.ts || true",
     "deploy:cf": "wrangler pages deploy out --project-name overmap-blog --commit-dirty=true",
     "deploy:cf:preview": "wrangler pages deploy out --project-name overmap-blog --branch preview --commit-dirty=true"
   },

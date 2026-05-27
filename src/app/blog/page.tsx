@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/page-header";
-import { BlogCard } from "@/components/site/blog-card";
+import { BlogExplorer } from "@/components/site/blog-explorer";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "博客",
   description: "Overmap Blog 上的 AI 实操笔记 · 视频文字稿 · 行业观察。",
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
+  },
 };
 
 export default function BlogIndex() {
@@ -15,17 +18,13 @@ export default function BlogIndex() {
       <PageHeader
         eyebrow="Blog"
         title="博客"
-        description="AI 实操笔记 · 视频文字稿 · 行业观察。每周更新。"
+        description={`${posts.length} 篇 · AI 实操笔记 · 视频文字稿 · 行业观察。每周更新。`}
       />
       <section className="container-page pb-16">
         {posts.length === 0 ? (
           <EmptyState />
         ) : (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((p) => (
-              <BlogCard key={p.slug} post={p} />
-            ))}
-          </div>
+          <BlogExplorer posts={posts} />
         )}
       </section>
     </>
