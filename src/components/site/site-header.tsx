@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/site/theme-toggle";
+import { GlobalSearchButton } from "@/components/site/global-search";
 import {
   Sheet,
   SheetContent,
@@ -65,12 +66,13 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex items-center gap-1.5">
+          <GlobalSearchButton />
           <Button
             variant="ghost"
             size="sm"
             asChild
-            className="hidden sm:inline-flex"
+            className="hidden lg:inline-flex"
           >
             <a
               href={siteConfig.mainSite}
