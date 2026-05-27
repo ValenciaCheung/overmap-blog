@@ -1,0 +1,181 @@
+---
+title: "Prompt Engineering 的 7 条反直觉技巧"
+description: "我跑了 2 年 prompt,踩过 100 个坑。这是我现在每天还在用的 7 条规则 —— 大部分跟你在 X 上看到的'技巧'相反。"
+date: "2026-05-15"
+tags: ["Prompt", "Engineering", "LLM"]
+author: "Overmap Team"
+---
+
+不写 "请用最专业最详细的方式..."。这种话术 2024 年的人都还在写,2026 年的模型早就不吃这一套。
+
+## 反直觉 1:**不要说"你是一位资深的 XX 专家"**
+
+老的 prompt 教程教你开头先角色扮演,比如 "You are a senior software architect..."。
+
+**2026 年的现实**:
+
+- Claude 4.7+ / GPT-5+ 内部已经有强烈的"我是助手"的身份,你把 role 强加上去反而会让它输出"装专家"的腔调
+- 真正起作用的是:**任务约束 + 输出格式**,不是角色
+
+**对比**:
+
+```
+❌ You are a senior backend engineer with 15 years of experience.
+   Please write a Go function that...
+
+✅ Write a Go function that hashes passwords using bcrypt with cost=12.
+   Constraints:
+   - Return (string, error)
+   - Use crypto/subtle for constant-time compare
+   - No external dependencies beyond standard library
+```
+
+第二种 prompt 更短,但输出的代码质量稳定多了。
+
+## 反直觉 2:**让它"想清楚再答"比让它"详细解释"重要**
+
+很多人为了让 AI 想清楚,会写 "解释你的思路" / "step by step"。
+
+**2026 年的现实**:
+
+- 顶级模型(Claude Opus / o3 / Gemini 2.5 Pro)有 native reasoning,它内部已经在 thinking,你让它"显式 step by step"反而会拖累
+- 真正起作用的是 ——**先 plan,再写**
+
+**对比**:
+
+```
+❌ Solve this problem step by step:
+   [problem]
+
+✅ For the problem below:
+   1. First, write out 3 different approaches (1-2 sentences each)
+   2. Pick the best one with reasoning
+   3. Then write the full solution
+
+   [problem]
+```
+
+第二种 prompt 让模型先 brainstorm,再做选择,质量比"step by step"高很多。
+
+## 反直觉 3:**示例比指令重要**
+
+任何长 prompt 都不如一个好的 example。
+
+**对比**:
+
+```
+❌ 把一句话改成正经科普风格,大概像知乎大 V 那种,
+   要有数据支撑,语气专业但易懂,字数控制在 300-500 字...
+   (写了 200 字约束)
+
+✅ Rewrite the sentence in the style below:
+
+   原句: "AI 正在改变设计"
+   改写示例:
+   "如果你 2020 年问设计师 '未来 5 年最大变化是什么',大多数人会说 5G、VR、超大屏。
+    现在回头看,真正的变量是 AI —— 不是它取代设计师,而是它把'出图'这一步压缩到了
+    1/100 时间。这意味着..."(全文 350 字)
+
+   现在改写下面这句:
+   [your sentence]
+```
+
+3 行 example > 200 行约束。
+
+## 反直觉 4:**用 XML / JSON 标签包装内容**
+
+老 prompt 用 `===` 或 `---` 分隔内容块。
+
+**2026 年的现实**:
+
+- Claude / GPT 都被训练成对 XML / JSON tags 敏感度更高
+- 标签让模型能精确知道"什么是 instruction, 什么是 input"
+
+**对比**:
+
+```
+❌ Translate this to English:
+   ===
+   今天天气不错
+   ===
+   Keep technical terms in original.
+
+✅ <task>
+   Translate the content inside <input> to English.
+   Keep technical terms in their original Chinese.
+   </task>
+
+   <input>
+   今天天气不错
+   </input>
+```
+
+## 反直觉 5:**不要让它"自由发挥"**
+
+很多人觉得 "be creative" 会得到更有意思的答案。
+
+**2026 年的现实**:
+
+- "creative" 太宽,模型会回到训练数据里的"平均创意",很套路
+- 真正激发创意的方法:**给硬约束**
+
+**对比**:
+
+```
+❌ Be creative. Write a startup pitch for a coffee shop.
+
+✅ Pitch a coffee shop that:
+   - Targets remote workers
+   - Charges 3x normal price
+   - Has no WiFi
+   - Has a 90-minute time limit per visit
+   Explain why this would work.
+```
+
+硬约束反而逼出非套路答案。
+
+## 反直觉 6:**模型不知道时间,要明确告诉它**
+
+很多 prompt 假设模型知道"现在",但其实它不知道。
+
+**正确做法**:
+
+```
+The current date is 2026-05-15. The user is asking about
+[topic] as of this date. Assume any info you have past this
+date is not yet known.
+```
+
+这一句能避免模型瞎编"未来"的事。
+
+## 反直觉 7:**短 prompt 通常打败长 prompt**
+
+新手以为 "prompt 写得详细 = AI 更懂"。
+
+**2026 年的现实**:
+
+- 长 prompt = 上下文稀释 = 重要约束被忽略
+- 5 个 强约束 > 20 个 弱约束
+- 把"必须做的"放最后,模型 attention 在 prompt 末尾最强
+
+**实操**:
+
+1. 写一版完整的 prompt
+2. 删掉 50% 不影响输出的部分
+3. 再跑一遍,质量大概率持平或更好
+4. 重复
+
+## 实战 prompt 模板
+
+我们的 [/prompts](/prompts) 里有 20+ 个验证过的模板,都遵循上面 7 条规则。可以直接抄。
+
+最常用的几个:
+- [代码 Review 模板](/prompts/code-review-checklist)
+- [UI 截图 → React 组件](/prompts/ui-screenshot-to-react)
+- [Midjourney 风格 Prompt 生成](/prompts/midjourney-style-prompt)
+
+## 总结
+
+不要相信"prompt 技巧速成班"。Prompt engineering 不是说服模型,是**让你自己想清楚要什么**。
+
+模型的输出质量上限,就是你 prompt 的清晰度。

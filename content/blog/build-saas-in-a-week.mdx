@@ -1,0 +1,145 @@
+---
+title: "一周内自己 build + 上线一个 SaaS(实战时间表)"
+description: "我刚把这个 Blog 站点从空目录到 blog.overmap.org 上线,7 天 / 单人 / AI 全程辅助。这是完整的时间表 + 工具栈 + 踩过的坑。"
+date: "2026-05-13"
+tags: ["SaaS", "AI 工作流", "Vibe Coding", "Cloudflare"]
+author: "Overmap Team"
+---
+
+如果你以为 "AI 帮你写代码 = 一天内出 SaaS",那是网红教程骗你。
+
+但 "AI 帮你写代码 = 一周内出可用 SaaS" 是真的。
+
+这是 Overmap Blog(就是你现在看的这个站)从 0 到上线的真实时间表。
+
+## 项目数据
+
+| 项 | 数据 |
+|---|---|
+| 工程师 | 1 人 |
+| 用时 | 7 天(分散) |
+| 代码量 | ~5000 行 TypeScript |
+| 静态页 | 70+ |
+| 内容 | 220 工具 / 17 Skills / 11 博客 / 23 Prompts |
+| 月费 | $0(全在 Cloudflare 免费档) |
+
+## Day 1:技术选型 + 脚手架(4 小时)
+
+**目标**:一个能跑的 Next.js 项目,UI 跟主站对齐。
+
+- 跟 AI(Claude Code)聊了 30 分钟,确认 Next.js 16 + Tailwind v4 + shadcn/ui
+- `pnpm create next-app` 起手
+- `shadcn init` 配置基础 UI
+- 把主站 `theme.css` 直接拷过来(oklch 配色不动)
+- 写第一版 Hero + Header + Footer
+
+**Vibe**:全程在 Cursor 里写,AI Tab 补全 + Composer 一起跑。
+
+## Day 2:5 个主路由全跑通(6 小时)
+
+**目标**:首页 + /blog + /tools + /hub + /prompts 都能 200。
+
+- 列出 5 个一级路由的信息架构
+- 让 Claude Code 跑 Agent:"按这个架构创建 5 个 page.tsx,数据先用 mock"
+- AI 写完 30 分钟,我 review + 改 design,1 小时
+- 加 MDX 渲染管道(next-mdx-remote/rsc)
+- 加示例数据:3 篇博客 + 10 个工具 + 5 个 Prompt
+
+**踩坑**:Turbopack dev 在 Intel Mac 上不工作 —— 改用 `next build --webpack`。Claude Code 没自动检测,debug 了 20 分钟。
+
+## Day 3:Skills Hub + GitHub 集成(5 小时)
+
+**目标**:从 `anthropics/skills` 仓库自动同步 17 个 Skill。
+
+- 写 `scripts/sync-skills.ts`(让 Claude 写 80%,我改 20%)
+- `prebuild` hook 触发同步
+- 加 /hub/skills 列表 + /hub/skills/[slug] 详情
+- 每个 skill 加"如何在 Claude Code 用"安装提示卡
+
+**Vibe**:这一步几乎全靠 Claude Code Agent —— 我给约束,它跑,跑完我 review。
+
+## Day 4:部署上线 + 域名(3 小时)
+
+**目标**:`blog.overmap.org` 真实可访问。
+
+- 推到 GitHub(Public repo)
+- 接 Cloudflare Workers Builds(不是经典 Pages)
+- 卡了一次:pnpm 11 的 supply-chain policy 阻断 build。降级到 pnpm 10 解决
+- DNS 配置(主域已在 Cloudflare,一键完成)
+- 验证 HTTPS、CDN、缓存
+
+**踩坑**:Cloudflare 把项目当 Worker 不是 Pages,wrangler.toml 格式不一样。改成 Workers Static Assets 格式后过。
+
+## Day 5:扩内容(全天)
+
+**目标**:从 demo 数据扩到真实可发布。
+
+- 工具:12 → 124 → 190 → 220(分 3 批写)
+- 博客:3 → 8 → 11
+- Prompts:5 → 18 → 23
+- 全程 Claude 帮忙写文案,我审核 + 改细节
+
+**Vibe**:这天 80% 是写内容,不是写代码。AI 帮你想 prompt 模板的标题、帮你写 5 个候选,你挑 3 个。
+
+## Day 6:UI / UX 升级(5 小时)
+
+**目标**:像个正经站,不像 demo。
+
+- 首页 Hero 加 stats bar(190 工具 / 17 skills)
+- /tools 加二级分类页(/tools/image, /tools/video 等 15 个 SEO 落地页)
+- 加 trending 板块
+- 加 cmd+K 全站搜索(用 cmdk + 现有 Dialog)
+- 给每个工具卡片加 new / trending / editors-pick 徽章
+
+**最值的优化**:cmd+K 搜索 —— 加完之后自己每天用。
+
+## Day 7:SEO + RSS + Changelog(4 小时)
+
+**目标**:站点对 Google 友好,有可订阅入口。
+
+- `app/sitemap.ts` + `app/robots.ts`(Next 16 metadata API)
+- `scripts/generate-feed.ts` 生成 RSS feed.xml
+- `scripts/generate-changelog.ts` 从 git log 出 /changelog
+- 写 /about 页面
+- 加 OG image + Twitter Card meta
+
+## 7 天总结(给同样想做的人)
+
+### ROI 排序(最大化产出)
+
+1. **第 1 天不要追求美观,先跑通**。Hero 用 placeholder,但 5 个路由要全 200。
+2. **数据先 mock,后真实**。不要在写 schema 时纠结,先用 JSON 跑通。
+3. **第 5 天后再想 SEO / 优化**。前 4 天专注核心功能。
+4. **AI 工具栈固定下来,不要换**。我 7 天里只用 Cursor + Claude Code + v0,没去试 Bolt / Lovable / Replit Agent。
+
+### 一周做不到的事
+
+- 用户增长(需要营销)
+- 真实用户反馈(没人来用怎么反馈)
+- 收钱(SaaS billing 集成至少要 3 天)
+- 严肃运营(SLA / 客服)
+
+但 **MVP + 真实可访问的产品 + 真实内容 = 一周** 完全做得到。
+
+## 工具栈(完整版)
+
+| 类别 | 工具 |
+|------|------|
+| IDE | Cursor + Claude Code |
+| 框架 | Next.js 16 + React 19 + TypeScript |
+| 样式 | Tailwind CSS v4 + shadcn/ui |
+| 内容 | MDX(博客 + Prompts)/ JSON(工具数据) |
+| 部署 | Cloudflare Workers Static Assets |
+| 域名 | Cloudflare DNS(主域已在) |
+| 设计 | Logo 用 v0 出概念 + 自己改 |
+| 内容生产 | Claude 写文案 + 我人工 review |
+
+## 你的下一步
+
+1. 列你 SaaS 的 5 个核心路由
+2. 用 v0 / Bolt 出第一版 hero
+3. 不要纠结 schema,先 mock JSON 跑通
+4. 7 天内必须上线(deadline 是关键)
+5. 写完之后给 5 个朋友看,收集反馈,再迭代
+
+完整源码在 [GitHub](https://github.com/ValenciaCheung/overmap-blog),欢迎抄。

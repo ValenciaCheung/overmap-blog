@@ -35,6 +35,15 @@
       <content:encoded><![CDATA[<p>12 个真正进入日常工作流的 AI 工具,按场景分类,带替代品和坑点。不是凑数榜单。</p><p><a href="https://blog.overmap.org/blog/2026-ai-tool-stack">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
     </item>
     <item>
+      <title>设计师怎么用 AI:不是被替代,是被分层</title>
+      <link>https://blog.overmap.org/blog/designer-ai-not-replaced</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/designer-ai-not-replaced</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>2026 年 AI 工具已经在设计流程里坐稳了,但替代的不是设计师,是某些特定环节。本文拆开看 5 个被替代 / 没被替代 / 反而更值钱的环节。</description>
+      <content:encoded><![CDATA[<p>2026 年 AI 工具已经在设计流程里坐稳了,但替代的不是设计师,是某些特定环节。本文拆开看 5 个被替代 / 没被替代 / 反而更值钱的环节。</p><p><a href="https://blog.overmap.org/blog/designer-ai-not-replaced">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
       <title>Claude vs ChatGPT vs Gemini — 2026 年怎么选</title>
       <link>https://blog.overmap.org/blog/claude-vs-chatgpt-vs-gemini</link>
       <guid isPermaLink="true">https://blog.overmap.org/blog/claude-vs-chatgpt-vs-gemini</guid>
@@ -78,6 +87,24 @@
       <author>noreply@overmap.org (Overmap Team)</author>
       <description>三大 AI 视频模型实测对比,5 类典型镜头(运动 / 人物 / 写实 / 创意 / 长片段)各自打分。</description>
       <content:encoded><![CDATA[<p>三大 AI 视频模型实测对比,5 类典型镜头(运动 / 人物 / 写实 / 创意 / 长片段)各自打分。</p><p><a href="https://blog.overmap.org/blog/ai-video-2026">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Prompt Engineering 的 7 条反直觉技巧</title>
+      <link>https://blog.overmap.org/blog/prompt-engineering-counter-intuitive</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/prompt-engineering-counter-intuitive</guid>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>我跑了 2 年 prompt,踩过 100 个坑。这是我现在每天还在用的 7 条规则 —— 大部分跟你在 X 上看到的&apos;技巧&apos;相反。</description>
+      <content:encoded><![CDATA[<p>我跑了 2 年 prompt,踩过 100 个坑。这是我现在每天还在用的 7 条规则 —— 大部分跟你在 X 上看到的'技巧'相反。</p><p><a href="https://blog.overmap.org/blog/prompt-engineering-counter-intuitive">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
+    </item>
+    <item>
+      <title>一周内自己 build + 上线一个 SaaS(实战时间表)</title>
+      <link>https://blog.overmap.org/blog/build-saas-in-a-week</link>
+      <guid isPermaLink="true">https://blog.overmap.org/blog/build-saas-in-a-week</guid>
+      <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
+      <author>noreply@overmap.org (Overmap Team)</author>
+      <description>我刚把这个 Blog 站点从空目录到 blog.overmap.org 上线,7 天 / 单人 / AI 全程辅助。这是完整的时间表 + 工具栈 + 踩过的坑。</description>
+      <content:encoded><![CDATA[<p>我刚把这个 Blog 站点从空目录到 blog.overmap.org 上线,7 天 / 单人 / AI 全程辅助。这是完整的时间表 + 工具栈 + 踩过的坑。</p><p><a href="https://blog.overmap.org/blog/build-saas-in-a-week">在 Overmap Blog 阅读全文 →</a></p>]]></content:encoded>
     </item>
   </channel>
 </rss>
