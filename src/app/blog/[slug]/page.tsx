@@ -5,7 +5,9 @@ import { format } from "date-fns";
 import { ArrowLeft, Clock, PlayCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { MdxContent } from "@/components/site/mdx-content";
+import { JsonLd, breadcrumb, orgSchema } from "@/components/site/json-ld";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
+import { siteConfig } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -43,8 +45,28 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const articleSchema = {
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Person", name: post.author ?? "Overmap Team" },
+    publisher: orgSchema,
+    image: `${siteConfig.url}/og-image.png`,
+    mainEntityOfPage: `${siteConfig.url}/blog/${slug}`,
+    keywords: (post.tags ?? []).join(", "),
+    inLanguage: "zh-CN",
+  };
+  const breadcrumbSchema = breadcrumb([
+    { name: "首页", href: "/" },
+    { name: "博客", href: "/blog" },
+    { name: post.title, href: `/blog/${slug}` },
+  ]);
+
   return (
     <article className="container-page max-w-3xl py-10 md:py-14">
+      <JsonLd data={[articleSchema, breadcrumbSchema]} />
       <Link
         href="/blog"
         className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"

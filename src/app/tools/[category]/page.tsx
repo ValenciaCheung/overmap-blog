@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { PageHeader } from "@/components/site/page-header";
 import { ToolCard } from "@/components/site/tool-card";
 import { Badge } from "@/components/ui/badge";
+import { JsonLd, breadcrumb } from "@/components/site/json-ld";
 import { getAllTools } from "@/lib/tools";
 import {
   TOOL_CATEGORIES,
@@ -12,6 +13,7 @@ import {
   type ToolCategory,
 } from "@/lib/tools-meta";
 import { CATEGORY_META } from "@/lib/category-meta";
+import { siteConfig } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -66,8 +68,28 @@ export default async function CategoryPage({
     (c) => c !== "all" && c !== category,
   ) as Exclude<ToolCategory, "all">[];
 
+  const itemListSchema = {
+    "@type": "ItemList",
+    name: meta.title,
+    description: meta.intro,
+    numberOfItems: tools.length,
+    itemListElement: tools.slice(0, 30).map((t, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: t.name,
+      url: t.url,
+      description: t.description,
+    })),
+  };
+  const breadcrumbSchema = breadcrumb([
+    { name: "首页", href: "/" },
+    { name: "AI 工具", href: "/tools" },
+    { name: meta.title, href: `/tools/${category}` },
+  ]);
+
   return (
     <>
+      <JsonLd data={[itemListSchema, breadcrumbSchema]} />
       <PageHeader
         eyebrow={
           <Link

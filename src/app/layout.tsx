@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/site/theme-provider";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
+import { JsonLd, websiteSchema, orgSchema } from "@/components/site/json-ld";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -55,6 +56,11 @@ export const metadata: Metadata = {
     canonical: "/",
     types: { "application/rss+xml": "/feed.xml" },
   },
+  verification: {
+    google: "google0d3ec3c076120f90",
+    // baidu: "...",       // TODO: 填百度站长验证码
+    // yandex: "...",
+  },
 };
 
 export const viewport: Viewport = {
@@ -83,6 +89,7 @@ export default function RootLayout({
           </div>
           <Toaster richColors position="top-center" />
         </ThemeProvider>
+        <JsonLd data={[websiteSchema, orgSchema]} />
       </body>
     </html>
   );

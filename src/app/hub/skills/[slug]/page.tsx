@@ -5,7 +5,9 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { MarkdownContent } from "@/components/site/markdown-content";
 import { SkillInstall } from "@/components/site/skill-install";
+import { JsonLd, breadcrumb, orgSchema } from "@/components/site/json-ld";
 import { getAllSkillSlugs, getSkillBySlug } from "@/lib/skills";
+import { siteConfig } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -36,8 +38,27 @@ export default async function SkillDetailPage({
   const skill = getSkillBySlug(slug);
   if (!skill) notFound();
 
+  const articleSchema = {
+    "@type": "TechArticle",
+    headline: skill.name,
+    description: skill.description,
+    author: { "@type": "Organization", name: "Anthropic", url: "https://www.anthropic.com" },
+    publisher: orgSchema,
+    image: `${siteConfig.url}/og-image.png`,
+    mainEntityOfPage: `${siteConfig.url}/hub/skills/${slug}`,
+    inLanguage: "en",
+    isBasedOn: skill.githubUrl,
+  };
+  const breadcrumbSchema = breadcrumb([
+    { name: "首页", href: "/" },
+    { name: "Skills Hub", href: "/hub" },
+    { name: "Anthropic Skills", href: "/hub/skills" },
+    { name: skill.name, href: `/hub/skills/${slug}` },
+  ]);
+
   return (
     <article className="container-page max-w-3xl py-10 md:py-14">
+      <JsonLd data={[articleSchema, breadcrumbSchema]} />
       <Link
         href="/hub/skills"
         className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"

@@ -6,7 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { CopyButton } from "@/components/site/copy-button";
 import { MdxContent } from "@/components/site/mdx-content";
+import { JsonLd, breadcrumb, orgSchema } from "@/components/site/json-ld";
 import { getAllPromptSlugs, getPromptBySlug } from "@/lib/prompts";
+import { siteConfig } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -37,8 +39,29 @@ export default async function PromptDetailPage({
   const prompt = getPromptBySlug(slug);
   if (!prompt) notFound();
 
+  const articleSchema = {
+    "@type": "Article",
+    headline: prompt.title,
+    description: prompt.description,
+    datePublished: prompt.date,
+    dateModified: prompt.date,
+    author: { "@type": "Person", name: prompt.author ?? "Overmap Team" },
+    publisher: orgSchema,
+    image: `${siteConfig.url}/og-image.png`,
+    mainEntityOfPage: `${siteConfig.url}/prompts/${slug}`,
+    articleSection: prompt.category,
+    keywords: (prompt.tags ?? []).join(", "),
+    inLanguage: "zh-CN",
+  };
+  const breadcrumbSchema = breadcrumb([
+    { name: "首页", href: "/" },
+    { name: "提示词", href: "/prompts" },
+    { name: prompt.title, href: `/prompts/${slug}` },
+  ]);
+
   return (
     <article className="container-page max-w-3xl py-10 md:py-14">
+      <JsonLd data={[articleSchema, breadcrumbSchema]} />
       <Link
         href="/prompts"
         className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"
