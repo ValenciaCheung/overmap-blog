@@ -1,0 +1,76 @@
+---
+title: "SaaS 产品落地页文案完整版"
+description: "从产品定位推导出整个落地页的文案:Hero / Problem / Solution / Features / Social Proof / CTA。"
+category: "营销"
+tags: ["SaaS", "Landing Page", "Copy"]
+model: "Claude / GPT-4o"
+date: "2026-05-17"
+prompt: |
+  你是一位转化率超过 5% 的 SaaS landing page 文案专家。请基于我给的产品信息,产出一个完整的落地页文案。
+
+  输出结构:
+
+  ## 1. Hero
+  - 主标题(≤8 字 / ≤10 个英文单词,带价值锚点)
+  - 副标题(1-2 句,讲清楚"卖给谁 + 解决什么问题")
+  - Primary CTA 文案(动词开头,例如 "Get started free")
+  - Secondary CTA(例如 "Watch demo (2min)")
+
+  ## 2. Social Proof Bar
+  - "Trusted by [number] teams" 句式
+  - 3-5 个客户 logo 占位(写出建议放谁)
+
+  ## 3. Problem Statement(3-4 句)
+  - 直接戳目标用户的痛点
+  - 用"你是不是经常..."这种共鸣式开头
+
+  ## 4. Solution / Core Features(3-5 个 feature 卡片)
+  每个卡片:
+  - 一句标题(动词开头)
+  - 2-3 句具体好处(用数字、对比)
+  - 1 行 caption 描述用户场景
+
+  ## 5. How It Works(3 步)
+  把使用流程拆成 3 步,每步一句 + 一个建议视觉
+
+  ## 6. Pricing Section
+  - 3 档定价(Free / Pro / Enterprise)
+  - 每档突出"为谁设计"
+  - 一句 "no credit card required" 类的减压文案
+
+  ## 7. FAQ(5 个)
+  挑选目标用户最常问的问题,简短回答
+
+  ## 8. Final CTA
+  - 大标题再现一次价值主张
+  - CTA 按钮 + 一句保证(例如 "14-day free trial · no card required")
+
+  约束:
+  - 不要用"革命性""改变游戏规则""颠覆"这种空词
+  - 每个声明都要带具体证据(数字 / 时长 / 对比)
+  - 文案语气符合目标用户(SaaS B2B → 专业,C2C → 亲切)
+  - 输出中文 / 英文都可以,跟产品语言一致
+
+  产品信息:
+  - 产品名:{{产品名}}
+  - 解决什么问题:{{一句话定位}}
+  - 目标用户:{{角色 / 公司规模}}
+  - 核心 3 个 features:{{特性 1 / 2 / 3}}
+  - 定价区间:{{$ /mo 起}}
+---
+
+## 用法
+
+填好 5 个占位变量,得到一份可直接交给设计师做 Hi-Fi 的落地页文案。配合 [v0](/tools)(prompt-to-UI) 可以 30 分钟内出可点击 demo。
+
+## 改写思路
+
+- **更激进 / 创业风** → 加约束 "用 Linear / Vercel 风格的极简文案"
+- **更企业 / 稳重** → 加约束 "保持企业 B2B 的专业语气,不要俏皮"
+- **加竞品对比** → 在 Solution 后加一个 "vs [competitor]" 对比卡片
+
+## 坑点
+
+- AI 默认会写"营销腔",改的时候直接给它 Linear / Stripe / Vercel 的官网链接当 reference,质量立马上来
+- Hero 主标题最难写,通常需要让 AI 出 8-10 个备选,自己挑
+- Pricing section 不要让 AI 编价格,要明确告诉它 "$19 / $49 / 自定义" 这种

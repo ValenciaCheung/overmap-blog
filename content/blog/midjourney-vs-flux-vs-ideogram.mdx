@@ -1,0 +1,72 @@
+---
+title: "Midjourney vs Flux vs Ideogram — 三种图谁更准"
+description: "三大主流 AI 图像生成横向对比,各自吃掉的场景:艺术风 / 工程文字 / 商业海报。"
+date: "2026-05-20"
+tags: ["AI 图像", "Midjourney", "Flux", "Ideogram"]
+author: "Overmap Team"
+---
+
+如果你只能装一个,不要犹豫,选 **Midjourney**。但实际上没人只用一个。这篇拆一下三家分别吃掉了哪些场景。
+
+## 一句话定位
+
+- **Midjourney V7** —— 艺术性 / 风格化 / 概念图。把"我说的"翻译成"它觉得最美的"
+- **Flux (BFL)** —— 真实感 / 文字渲染 / 商用授权。把"我说的"翻译成"准确的"
+- **Ideogram V3** —— 海报 / Logo / 文字密集场景。把"我说的"翻译成"印刷品"
+
+## 实测对比
+
+我用同一组 6 个 prompt 测三家,从设计师视角打分(1-5):
+
+| Prompt | Midjourney | Flux | Ideogram |
+|--------|-----------|------|----------|
+| "Cyberpunk city at night, neon, rain" | **5** | 4 | 3 |
+| "Product shot: minimalist black coffee mug on wood" | 4 | **5** | 3 |
+| "Poster: 'Spring Festival 2026' in bold Chinese typography" | 2 | 3 | **5** |
+| "Photo of a Golden Retriever puppy in a field" | 4 | **5** | 3 |
+| "Abstract: emotion of 'longing for someone far away'" | **5** | 3 | 2 |
+| "App icon: a friendly cloud face, flat design" | 3 | 4 | **5** |
+
+## 各自的"绝活"
+
+### Midjourney V7 + Style Reference
+Style Ref 是它的护城河。我可以丢一张 reference 图,告诉 MJ"用这张图的风格画下面的内容",**品牌一致性瞬间解决**。
+- 适合:艺术总监 / 概念美术 / 摄影艺术风
+- 不适合:文字 / 商业图(版权暧昧)
+
+### Flux 系列(Pro / Schnell / Kontext)
+Flux 是 SD 原班人马新作。Pro 版本质感顶级,Kontext 模式能"在原图基础上改"(类似 Photoshop Generative Fill 但更准)。
+- 适合:产品摄影 / 真实人像 / 商用授权
+- 不适合:超艺术化 / 风格强烈的内容(它"太真实")
+
+### Ideogram V3
+**文字渲染零失误**。其他家画带文字的海报基本翻车,Ideogram 是唯一能稳定写对英文 + 中文的。Magic Prompt 自动补 prompt 也是它一大亮点。
+- 适合:海报 / Logo / UI 截图 mockup
+- 不适合:画细节人像(还是 MJ / Flux 更稳)
+
+## 价格
+
+| | 起步价 | 算力 |
+|--|------|------|
+| Midjourney | $10/mo (Basic) | ~200 imgs/mo |
+| Flux Pro (BFL API) | $0.05/img | 按用付费 |
+| Ideogram | Free 25/day + $7/mo Plus | 无限慢速 |
+
+性价比:**Ideogram Plus** 月费 $7 还能无限刷,免费档每天 25 张,起步用户最划算。
+
+## 我的实战组合
+
+1. **概念稿** → Midjourney 出 4-8 张候选
+2. **某一张拿去精修** → 喂 Flux Kontext 改细节(换背景 / 加文字)
+3. **最后做海报** → Ideogram 加文字层
+4. **印刷或大图** → 全部送 [Magnific](https://magnific.ai) 4x 放大
+
+四个工具串起来,基本能覆盖 80% 的设计需求。
+
+## 不要忘的备选
+
+- **Recraft** —— 矢量 SVG 输出 + 品牌色一致性,设计师专属
+- **Krea** —— 实时画图,迭代速度最快
+- **DALL·E 3** —— 在 ChatGPT 里随手用,生态完整
+
+完整列表在 [/tools 图像分类](/tools)。

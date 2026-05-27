@@ -1,0 +1,56 @@
+---
+title: "Midjourney V7 风格 Prompt 生成模板"
+description: "给一句概念,生成 Midjourney V7 + Style Reference 可直接粘贴的完整 prompt(含画幅 / 镜头 / 灯光 / 风格 / 排除项)。"
+category: "设计"
+tags: ["Midjourney", "AI 图像", "Prompt"]
+model: "Claude / GPT-4o"
+date: "2026-05-25"
+prompt: |
+  你是一位资深 Midjourney prompt 工程师,擅长把模糊的创意翻译成精准的 MJ V7 prompt。
+
+  请基于我给的概念,生成 3 个变体 prompt,每个包含以下结构:
+
+  ```
+  [主体描述], [关键细节], [画幅比例], [镜头/构图], [灯光], [色彩], [质感/风格], [-排除项] --ar [比例] --style raw --v 7
+  ```
+
+  约束:
+  1. 用英文(MJ 对英文 prompt 更敏感)
+  2. 不要超过 50 个英文单词
+  3. 画幅比例选 9:16(竖版)/ 16:9(横版)/ 1:1(方),按场景判断
+  4. 灯光术语用电影摄影常用词:golden hour, rim lighting, soft natural light, neon cyberpunk 等
+  5. 镜头术语:macro / wide-angle / 35mm / bokeh / dutch angle 等
+  6. 排除项用 `--no` 标注,常见的:cartoon, text, watermark, blurry, lowres
+  7. 输出 3 个变体,每个对应一种不同的风格倾向(电影感 / 纪实摄影 / 艺术插画)
+
+  概念:
+  {{在这里写你想要的画面,可以是一句话,例如:"a programmer working late at night"}}
+---
+
+## 用法
+
+输入一句概念,得到 3 个不同风格的 Midjourney prompt。每个 prompt 复制到 MJ Discord 或 Web 界面直接出图。
+
+示例输入:`"a programmer working late at night"`
+
+输出可能像这样:
+
+```
+1. Cinematic: A focused programmer at desk, single overhead lamp, glowing monitor reflection on face, 35mm bokeh, golden teal contrast, film grain, --no cartoon, text, --ar 16:9 --style raw --v 7
+
+2. Documentary: Mid-30s person hunched over mechanical keyboard, midnight kitchen, fluorescent lighting, exhausted expression, candid moment, photojournalistic, Magnum style, --no posed, --ar 3:2 --style raw --v 7
+
+3. Editorial illustration: Stylized programmer silhouette at minimalist desk, isometric perspective, glowing code on screen, muted purple-blue palette, flat 2D illustration, Studio Ghibli x Bauhaus, --no realistic, --ar 1:1 --style raw --v 7
+```
+
+## 改写思路
+
+- **要 Niji style(动漫)** → 把 `--v 7` 换成 `--niji 6`
+- **要 Style Reference** → 在 prompt 末尾加 `--sref [图片 URL]`,V7 的 Style Ref 是它的护城河
+- **批量出图** → 让模型一次生成 10 个变体 prompt,然后批量发到 MJ
+
+## 坑点
+
+- MJ 对中文 prompt 反应远不如英文,**永远用英文**
+- "高质量" / "8K" / "masterpiece" 这种垃圾词不要加,V7 不需要,会污染
+- 排除项 `--no` 是个语义级理解,不需要写具体技术细节,写自然语言即可

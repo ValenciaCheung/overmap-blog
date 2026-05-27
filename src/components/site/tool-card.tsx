@@ -1,7 +1,18 @@
 import { ArrowUpRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CATEGORY_LABELS, PRICING_LABEL, type ToolItem } from "@/lib/tools-meta";
+import {
+  BADGE_LABEL,
+  CATEGORY_LABELS,
+  PRICING_LABEL,
+  type ToolItem,
+} from "@/lib/tools-meta";
+
+const BADGE_VARIANTS: Record<NonNullable<ToolItem["badge"]>, string> = {
+  new: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20 dark:text-emerald-400",
+  trending: "bg-orange-500/10 text-orange-600 border-orange-500/20 dark:text-orange-400",
+  "editors-pick": "bg-primary/10 text-primary border-primary/30",
+};
 
 export function ToolCard({ tool }: { tool: ToolItem }) {
   return (
@@ -14,7 +25,7 @@ export function ToolCard({ tool }: { tool: ToolItem }) {
       <Card className="h-full glass-2 transition-colors hover:border-primary/40">
         <CardHeader>
           <div className="flex items-start gap-3">
-            <div className="flex size-10 items-center justify-center rounded-lg bg-accent text-xl">
+            <div className="flex size-10 items-center justify-center rounded-lg bg-accent text-xl shrink-0">
               {tool.logo ?? "🤖"}
             </div>
             <div className="flex-1 min-w-0">
@@ -30,6 +41,16 @@ export function ToolCard({ tool }: { tool: ToolItem }) {
                   <>
                     <span className="opacity-50">·</span>
                     <span>{PRICING_LABEL[tool.pricing]}</span>
+                  </>
+                )}
+                {tool.badge && (
+                  <>
+                    <span className="opacity-50">·</span>
+                    <span
+                      className={`rounded px-1.5 py-0.5 text-[10px] font-medium border ${BADGE_VARIANTS[tool.badge]}`}
+                    >
+                      {BADGE_LABEL[tool.badge]}
+                    </span>
                   </>
                 )}
               </div>

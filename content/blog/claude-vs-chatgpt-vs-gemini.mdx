@@ -1,0 +1,95 @@
+---
+title: "Claude vs ChatGPT vs Gemini — 2026 年怎么选"
+description: "三个旗舰对话 AI 实测对比,按 5 个真实场景(写代码 / 长文档 / 数据分析 / 创意 / 多模态)给推荐。"
+date: "2026-05-24"
+tags: ["LLM", "对比", "Claude", "ChatGPT", "Gemini"]
+author: "Overmap Team"
+---
+
+每隔 3 个月,这个问题就要被问一遍。截至 2026 年 5 月,我的答案是 ——
+
+## TL;DR
+
+| 场景 | 推荐 | 备选 |
+|------|------|------|
+| 写代码 / 改 PR | **Claude** (Sonnet 4.7 / Opus 4) | Gemini 2.5 Pro |
+| 长文档阅读 / 总结 | **Claude** (1M context, Opus) | Gemini (2M context) |
+| 数据分析 / 跑 Python | **ChatGPT** (Code Interpreter 最稳) | Claude (Computer Use) |
+| 创意写作 / 编故事 | **Claude** | ChatGPT |
+| 实时联网 / 多模态 | **Gemini** + Google Search | ChatGPT (DeepResearch) |
+| 国内可访问 | DeepSeek / Qwen | (上述都需要科学上网) |
+
+## 各家的优势
+
+### Claude (Anthropic)
+- 写作风格自然,中英文不端着
+- 工程师社区共识"代码模型第一档"
+- Agent / Computer Use 能力领先
+- 缺点:免费版限制重,中国大陆访问需自建中转
+
+### ChatGPT (OpenAI)
+- 生态最大:GPTs / Sora 视频 / DALL·E / 高级语音
+- Code Interpreter 仍是数据分析最稳的执行环境
+- 缺点:写作风格偏"营销感",Sonnet 4.7 之后被 Claude 拉开
+
+### Gemini (Google)
+- 2M 上下文(实测真能塞,不像有的家"声称"2M)
+- 跟 Google Workspace / Search 深度整合
+- Veo 视频生成自带音频
+- 缺点:产品矩阵太散,经常切换 model 后能力突变
+
+## 价格对比(截至 2026-05)
+
+|  | 个人版 | API(1M tokens 输入/输出) |
+|--|------|---|
+| Claude Pro | $20/mo | Sonnet 4.7: $3 / $15 |
+| ChatGPT Plus | $20/mo | GPT-5: $5 / $20 |
+| Gemini Advanced | $20/mo | 2.5 Pro: $1.25 / $5 |
+
+Gemini API 是三家中最便宜的,小项目跑 RAG / Agent 性价比最高。
+
+## 实测 5 个真实场景
+
+### 场景 1:让它读 200 页 PDF 总结
+- Claude Opus(1M ctx)→ 直接塞,结构化总结质量最高
+- Gemini 2.5 Pro(2M ctx)→ 能塞更长,但细节理解略弱
+- ChatGPT → 需要 RAG / file_search,绕
+
+**结论:Claude**
+
+### 场景 2:写一个 Next.js 15 组件
+- Claude Sonnet 4.7 → 一次就对,符合最新 API
+- ChatGPT → 经常给旧版 API 写法
+- Gemini → 代码格式美但有逻辑漏洞
+
+**结论:Claude**
+
+### 场景 3:上传 CSV 让它分析
+- ChatGPT Code Interpreter → 跑 Python 出图最稳
+- Claude → Files 模式可读 CSV,但执行环境不如 ChatGPT
+- Gemini → 集成在 Workspace 里挺好,但单独跑略弱
+
+**结论:ChatGPT**
+
+### 场景 4:实时新闻 / 当下行情
+- Gemini + Google Search → 直接联网,引用清楚
+- ChatGPT DeepResearch → 慢但深
+- Claude → 不擅长(需要 MCP 接 search)
+
+**结论:Gemini**
+
+### 场景 5:中文创意写作 / 改稿
+- Claude → 中文自然度第一,不端着、不写废话
+- DeepSeek → 国产模型里最接近 Claude 的中文质感
+- ChatGPT → 翻译腔重
+
+**结论:Claude / DeepSeek**
+
+## 一句话决策
+
+- **如果你写代码或长文档为主** → 直接订 Claude Pro
+- **如果你想要"最大生态 + 视频生成"** → ChatGPT Plus(顺便用 Sora)
+- **如果你重度用 Google Workspace** → Gemini Advanced
+- **如果你需要免费 / 中国大陆访问无门槛** → DeepSeek
+
+不要被"哪个模型分数最高"误导。**模型分数 ≠ 你的具体场景**。先确定你 80% 时间在干嘛,再挑工具。

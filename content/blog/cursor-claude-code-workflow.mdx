@@ -1,0 +1,83 @@
+---
+title: "Cursor + Claude Code 工作流:两个 AI IDE 怎么互补不打架"
+description: "Cursor 用来贴身改文件,Claude Code 用来跑长任务。两套配合下来,我现在 60% 的工程时间是看 AI 干活。"
+date: "2026-05-22"
+tags: ["Cursor", "Claude Code", "Workflow", "Coding"]
+author: "Overmap Team"
+video: "https://www.youtube.com/watch?v=__placeholder__"
+---
+
+很多人在问:既然有 Cursor,Claude Code 是不是重复了?**不是。它俩是不同手感的 AI 工具**。这篇拆一下我每天怎么用。
+
+## 心智模型
+
+| | Cursor | Claude Code |
+|--|--|--|
+| 形态 | IDE | CLI |
+| 输入 | 看着代码改 / Composer | 自然语言 + 终端 |
+| 适合 | 跨 5-15 个文件改、紧贴当前 cursor 上下文 | 自主跑一段流程、动 shell |
+| Context | 当前 tab + Composer 选 | 1M tokens,整个仓库 + memory |
+| Iter 速度 | 极快(秒级 Tab) | 慢(几十秒一轮 Agent) |
+
+**类比**:Cursor 是"我开车,AI 是副驾,我说哪我走哪";Claude Code 是"AI 开车,我坐后排监督"。
+
+## 我的真实工作流
+
+### 早上:开 Cursor 干活
+- 大部分 feature 工作 → Cursor Composer 在 5-15 个文件之间改
+- 想到一个问题快速搜代码 → Cursor 的 codebase 搜索快
+- 看到 lint 报错 → Tab 补全直接修
+
+### 下午:开始让 Claude Code 跑长任务
+- "去把所有 useState 改成 useReducer"(跨 30 个文件)→ Claude Code 自主迭代
+- "跑测试,看哪些挂了,挨个修"→ Claude Code 调 shell 修测试
+- "把这个 PR 改成符合我们的 commit 规范,然后 push" → Agent 全包
+
+### 晚上:总结日报让 Claude Code 出
+我有个本地 skill 叫 `daily-work-recap`,Claude Code 每天 18:00 自动跑,扫工作目录的 git log + 文件改动,生成 Markdown 日报到 `~/projects/工作日报-YYYY-MM-DD.md`。
+
+## 两个工具不打架的关键:**仓库根目录的 CLAUDE.md**
+
+两个工具都会读这个文件作为项目"宪法"。我每个项目根都放一份,内容:
+
+```markdown
+# CLAUDE.md - Project Conventions
+
+## Stack
+- Next.js 16 App Router + TypeScript
+- Tailwind v4 + shadcn/ui
+
+## Code style
+- Use named exports
+- Async/await only, no .then() chains
+- Tests use Vitest, not Jest
+
+## Definition of done
+- TypeScript passes
+- ESLint passes
+- Existing tests still green
+```
+
+两个 IDE 都遵守,出来的代码风格就一致。
+
+## 一些反直觉的发现
+
+1. **Claude Code 比 Cursor 更省 token** —— Cursor 的 Composer 每次会重发上下文,Claude Code 内部 caching 做得好
+2. **Cursor 的 Agent 模式跟 Claude Code 不一样** —— Cursor Agent 更像"加强版 Composer",Claude Code 真的能改 shell / 跑测试 / 跨工具协作
+3. **CLAUDE.md 比 .cursor/rules 重要** —— rules 文件经常被 overlooked,CLAUDE.md 两个工具都吃
+
+## 别同时开两个 Agent
+
+两个 Agent 同时在同一个仓库工作 = 冲突地狱。我的规则:**任何时候只允许一个 Agent 处于"自主改文件"状态**。
+
+如果 Cursor Composer 在跑 → Claude Code 只让它读、不让它写。反之亦然。
+
+## 工具不会越来越多
+
+很多人焦虑:每月新 IDE 出 5 个,要不要全装一遍。**不用**。Cursor + Claude Code 这套今年大概率不会被替代,因为:
+
+- Cursor 在 IDE 体验上已经成熟
+- Claude Code 在 Agent / CLI 上是 Anthropic 官方
+- Windsurf / Codeium 等竞品没有质的差异,只是另一种风格
+
+把这两个用熟,比追新工具靠谱多了。
