@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
-
-export const dynamic = "force-static";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { getAllPromptSlugs, getPromptBySlug } from "@/lib/prompts";
 import { getAllSkillSlugs } from "@/lib/skills";
+import { TOOL_CATEGORIES } from "@/lib/tools-meta";
+
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url.replace(/\/$/, "");
@@ -21,6 +22,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
   ];
 
+  const categoryPages: MetadataRoute.Sitemap = TOOL_CATEGORIES.filter(
+    (c) => c !== "all",
+  ).map((c) => ({
+    url: `${base}/tools/${c}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = getAllPostSlugs()
     .map((slug) => {
       const post = getPostBySlug(slug);
@@ -34,16 +44,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
     .filter((x): x is NonNullable<typeof x> => Boolean(x));
 
-  const promptPages: MetadataRoute.Sitemap = getAllPromptSlugs()
-    .map((slug) => {
-      const prompt = getPromptBySlug(slug);
-      return {
-        url: `${base}/prompts/${slug}`,
-        lastModified: prompt?.date ? new Date(prompt.date) : now,
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      };
-    });
+  const promptPages: MetadataRoute.Sitemap = getAllPromptSlugs().map((slug) => {
+    const prompt = getPromptBySlug(slug);
+    return {
+      url: `${base}/prompts/${slug}`,
+      lastModified: prompt?.date ? new Date(prompt.date) : now,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    };
+  });
 
   const skillPages: MetadataRoute.Sitemap = getAllSkillSlugs().map((slug) => ({
     url: `${base}/hub/skills/${slug}`,
@@ -52,5 +61,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...blogPages, ...promptPages, ...skillPages];
+  return [
+    ...staticPages,
+    ...categoryPages,
+    ...blogPages,
+    ...promptPages,
+    ...skillPages,
+  ];
 }
